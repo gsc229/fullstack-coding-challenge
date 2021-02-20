@@ -6,7 +6,8 @@ from rest_framework import status
 # Create your views here.
 
 class ComplaintViewSet(viewsets.ModelViewSet):
-
+  http_method_names = ['get']
+  serializer_class = ComplaintSerializer
   def list(self, request):
     # Get all complaints from the user's district
     userprofile = UserProfile.objects.filter(user=request.user).first()

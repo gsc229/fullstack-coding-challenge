@@ -1,11 +1,14 @@
 import React from 'react'
+import LayoutOne from '../Layouts'
 import Dashboard from '../Components/Dashboard'
 
 const DashboardPage = () => {
   return (
-    <div className='dashboard-page-container'>
-      <Dashboard />
-    </div>
+    <LayoutOne>
+      <div className='dashboard-page-container'>
+        <Dashboard />
+      </div>    
+    </LayoutOne>
   )
 }
 

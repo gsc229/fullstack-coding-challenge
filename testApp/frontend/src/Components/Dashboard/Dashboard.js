@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { getAllComplaintData } from '../../Api/getData'
+import { getAllComplaintData } from '../../Api/getComplaintData'
 import PreContainerObj from '../../DevComponents/PreContainerObj'
 
 const Dashboard = () => {

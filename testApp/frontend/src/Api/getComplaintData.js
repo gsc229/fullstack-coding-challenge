@@ -57,13 +57,28 @@ export const getTopComplaints = (logOutput=false) => {
   })
 }
 
+/* complaints/constituentCases/ */
+export const getConstituentCases = (logOutput=false) => {
+  return axiosWithAuth()
+  .get('/complaints/constituentCases/')
+  .then(ConstituentCasesResponse => {
+    logOutput && console.log({ConstituentCasesResponse})
+    return ConstituentCasesResponse.data.data
+  })
+  .catch(ConstituentCasesError => {
+    logOutput && console.log({ConstituentCasesError})
+    return false  
+  })
+}
+
 
 export const getAllComplaintData = async (logOutput=false) => {
       
   let newData = {
     complaints: [],
     openCases: [],
-    closedCases: [], 
+    closedCases: [],
+    constituentCases: [],
     topThreeComplaints: [],
     complaintTallies: []
   }
@@ -93,6 +108,12 @@ export const getAllComplaintData = async (logOutput=false) => {
   if(topData) newData = {
     ...newData,
     ...topData
+  }
+
+  const constituentCases = await getConstituentCases(logOutput) 
+  if(topData) newData = {
+    ...newData,
+    constituentCases
   }
 
   return newData

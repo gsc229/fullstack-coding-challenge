@@ -22,7 +22,7 @@ class ComplaintViewSet(viewsets.ModelViewSet):
     user_dist = getDistrictString(request.user)
     queryset = self.queryset.filter(account=user_dist)
     serializer = ComplaintSerializer(queryset, many=True)
-    return Response(serializer.data)
+    return Response({'success': True, 'data': serializer.data})
 
 class OpenCasesViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
@@ -34,7 +34,7 @@ class OpenCasesViewSet(viewsets.ModelViewSet):
     user_dist = getDistrictString(user=request.user)
     queryset = self.queryset.filter(account=user_dist, closedate__isnull=True)
     serializer = ComplaintSerializer(queryset, many=True)
-    return Response(serializer.data)
+    return Response({'success': True, 'data': serializer.data})
 
 class ClosedCasesViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
@@ -46,7 +46,7 @@ class ClosedCasesViewSet(viewsets.ModelViewSet):
     user_dist = getDistrictString(user=request.user)
     queryset = self.queryset.filter(account=user_dist, closedate__isnull=False)
     serializer = ComplaintSerializer(queryset, many=True)
-    return Response(serializer.data)
+    return Response({'success': True, 'data': serializer.data})
     
 class TopComplaintTypeViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
@@ -57,5 +57,5 @@ class TopComplaintTypeViewSet(viewsets.ModelViewSet):
     # Get the top 3 complaint types from the user's district
     user_dist = getDistrictString(user=request.user)
     annotatedSet = self.queryset.filter(complaint_type__isnull=False).values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count')
-    top_three =  [ complaint['complaint_type'] for complaint in annotatedSet][:3]
-    return Response({"top_three": top_three, "data": annotatedSet})
+    top_three =  [complaint['complaint_type'] for complaint in annotatedSet[:3]]
+    return Response({"success": True, "top_three": top_three, "data": annotatedSet})

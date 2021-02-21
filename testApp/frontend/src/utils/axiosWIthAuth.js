@@ -1,9 +1,10 @@
 import axios from 'axios'
 import {baseUrl} from '../config/config'
-const token = localStorage.getItem('token')
-console.log({token})
+
 
 const axiosWithAuth = () =>  {
+  const token = localStorage.getItem('token')
+  
   return axios.create({
   baseURL: baseUrl,
   headers: {

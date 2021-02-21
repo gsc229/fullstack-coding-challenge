@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
 
     const getAllData = async () => {
-
+      
       let newData = {}
 
       await axiosWithAuth()

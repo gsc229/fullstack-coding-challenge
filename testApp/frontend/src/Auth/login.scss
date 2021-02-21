@@ -1,0 +1,11 @@
+.login-form-container{
+  max-width: 300px;
+  margin: auto;
+  .login-form{
+    text-align: left;
+    button{
+      background-color: $nycc-blue;
+      border-color: $nycc-blue;
+    }
+  }
+}

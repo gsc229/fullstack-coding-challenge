@@ -1,3 +1,6 @@
+@import './variables';
+@import './custom_bs.scss';
+
 .App {
   text-align: center;
 }
@@ -20,3 +23,24 @@
 .App-link {
   color: #09d3ac;
 }
+
+h1, h2, h3, h4, h5, h6{
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+}
+
+pre{
+  background-color: $bs-dark;
+  color: 'white'; 
+}
+
+.pre-container{
+  display: flex;
+  justify-content: center;
+  margin: auto
+}
+
+// Layouts
+@import './Layouts/layouts.scss';
+
+// Login
+@import './Auth/login.scss';

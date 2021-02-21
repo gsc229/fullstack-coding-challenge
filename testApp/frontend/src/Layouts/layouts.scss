@@ -1,0 +1,21 @@
+.layout-container{
+  min-height: 500px;
+  padding-top: 85px;
+}
+
+.layout-navbar{
+  .navbar-brand{
+    display: flex;
+    align-items: center;
+    .navbar-nycc-brand{
+      max-height: 50px;
+      margin-right: 10px;
+    }
+    h4{
+      position: relative;
+      top: 3px;
+    }
+    
+  }
+}
+

@@ -1,10 +1,16 @@
 import React from 'react'
+import Container from 'react-bootstrap/Container'
+import Menu from './Menu'
 
-const LayoutOne = () => {
+
+const LayoutOne = ({children}) => {
   return (
-    <div>
-      
-    </div>
+    <Container fluid className='layout-one'>
+      <Menu />
+      <div className="layout-one-content">
+        {children}
+      </div>
+    </Container>
   )
 }
 

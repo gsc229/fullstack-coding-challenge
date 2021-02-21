@@ -19,10 +19,10 @@ const Menu = () => {
       <Navbar.Collapse>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to='/dashboard'>
-            Dashboard
+            Open Complaints
           </Nav.Link>
           <Nav.Link as={Link} to='/dashboard'>
-            Dashboard
+            Closed Complaints
           </Nav.Link>
         </Nav>
         <Nav as={Link} to='/login'>

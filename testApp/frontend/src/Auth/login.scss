@@ -3,5 +3,9 @@
   margin: auto;
   .login-form{
     text-align: left;
+    button{
+      background-color: $nycc-blue;
+      border-color: $nycc-blue;
+    }
   }
 }

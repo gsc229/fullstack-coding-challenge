@@ -1,16 +1,19 @@
 import React, {useState} from 'react'
-import axiosWithAuth from '../utils/axiosWIthAuth'
+import axios from 'axios'
+import {loginUrl} from '../config/config'
+import { useHistory } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const Login = () => {
+
+  const history = useHistory()
 
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
 
   })
-
 
   const handleChange = (e) => {
     setCredentials({
@@ -19,15 +22,27 @@ const Login = () => {
     })
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios
+    .post(loginUrl, credentials)
+    .then(loginResponse => {
+      console.log({loginResponse})
+      localStorage.setItem('token', loginResponse.data.token)
+      history.push('/')
+    })
+    .catch(loginError => {
+      console.log({loginError})
+    })
   }
 
   return (
     <div>
       <h4>Login</h4>
       <div className='login-form-container'>
-        <Form className='login-form'>
+        <Form 
+        onSubmit={handleSubmit}
+        className='login-form'>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -50,7 +65,7 @@ const Login = () => {
           </Form.Group>
           <Button 
           onSubmit={handleSubmit}
-          variant="primary" type="submit">
+          type="submit">
             Submit
           </Button>
         </Form>

@@ -5,6 +5,13 @@ import {Link} from 'react-router-dom'
 import nycclogo from '../images/nyc-seal-blue.png'
 
 const Menu = () => {
+
+  const handleLogOut = () => {
+    localStorage.removeItem('token')
+  }
+
+
+
   return (
     <Navbar 
     className='layout-navbar'
@@ -25,7 +32,9 @@ const Menu = () => {
             Closed Complaints
           </Nav.Link>
         </Nav>
-        <Nav as={Link} to='/login'>
+        <Nav 
+        onClick={handleLogOut}
+        as={Link} to='/login'>
           Logout
         </Nav>
       </Navbar.Collapse>

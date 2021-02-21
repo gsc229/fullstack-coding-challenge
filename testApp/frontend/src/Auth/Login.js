@@ -27,7 +27,6 @@ const Login = () => {
     axios
     .post(loginUrl, credentials)
     .then(loginResponse => {
-      console.log({loginResponse})
       localStorage.setItem('token', loginResponse.data.token)
       history.push('/')
     })

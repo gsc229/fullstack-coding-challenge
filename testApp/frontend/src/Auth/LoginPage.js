@@ -2,11 +2,11 @@ import React from 'react'
 import LayoutLoggedOut from '../Layouts/LayoutLoggedOut'
 import Login from '../Auth/Login'
 
-const LoginPage = () => {
+const LoginPage = ({setAuth}) => {
   return (
     <LayoutLoggedOut >
       <div className="login-page">
-        <Login />
+        <Login setAuth={setAuth} />
       </div>
     </LayoutLoggedOut>
   )

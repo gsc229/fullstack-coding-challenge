@@ -5,7 +5,9 @@ import { useHistory } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const Login = () => {
+const Login = ({
+  setAuth
+}) => {
 
   const history = useHistory()
 

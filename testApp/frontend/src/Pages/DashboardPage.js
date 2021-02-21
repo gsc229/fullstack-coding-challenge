@@ -1,6 +1,6 @@
 import React from 'react'
 import LayoutLoggedIn from '../Layouts/LayoutLoggedIn'
-import Dashboard from '../Components/Dashboard'
+import Dashboard from '../Components/Dashboard/Dashboard'
 
 
 const DashboardPage = () => {

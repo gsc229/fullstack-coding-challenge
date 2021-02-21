@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import axiosWithAuth from '../utils/axiosWIthAuth'
+import axiosWithAuth from '../../utils/axiosWIthAuth'
 
 const Dashboard = () => {
 

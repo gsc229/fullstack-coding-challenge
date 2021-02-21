@@ -6,11 +6,14 @@ import nycclogo from '../images/nyc-seal-blue.png'
 
 const Menu = () => {
   return (
-    <Navbar fixed='top' expand='lg' >
+    <Navbar 
+    className='layout-navbar'
+    fixed='top' bg='light' expand='lg' >
       <Navbar.Brand>
         <img  
         className='navbar-nycc-brand'
         src={nycclogo} alt=""/>
+        <h4>New York City Council</h4>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>
@@ -18,6 +21,12 @@ const Menu = () => {
           <Nav.Link as={Link} to='/dashboard'>
             Dashboard
           </Nav.Link>
+          <Nav.Link as={Link} to='/dashboard'>
+            Dashboard
+          </Nav.Link>
+        </Nav>
+        <Nav as={Link} to='/login'>
+          Logout
         </Nav>
       </Navbar.Collapse>
     </Navbar>

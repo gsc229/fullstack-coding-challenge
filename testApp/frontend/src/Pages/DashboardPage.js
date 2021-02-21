@@ -1,14 +1,15 @@
 import React from 'react'
-import LayoutOne from '../Layouts'
+import LayoutLoggedIn from '../Layouts/LayoutLoggedIn'
 import Dashboard from '../Components/Dashboard'
+
 
 const DashboardPage = () => {
   return (
-    <LayoutOne>
+    <LayoutLoggedIn>
       <div className='dashboard-page-container'>
         <Dashboard />
       </div>    
-    </LayoutOne>
+    </LayoutLoggedIn>
   )
 }
 

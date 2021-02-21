@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import Menu from './Menu'
+import Menu from './MenuLoggedIn'
 
 
 const LayoutOne = ({children}) => {

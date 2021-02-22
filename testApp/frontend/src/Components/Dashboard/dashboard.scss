@@ -1,0 +1,41 @@
+.dashboard{
+  text-align: left;
+  margin-top: 50px;
+}
+
+.complaints-table-container{
+  h6{
+    background-color: $nycc-blue;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.at-a-glance-container{
+  background-color: $nycc-blue;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 2px;
+  color: white;
+  h6{
+    font-weight: 600;
+  }
+  .list-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 30px;
+    .at-a-glance-list, .top-types-list{
+      padding: 0;
+      margin-right: 40px;
+      //list-style: none;
+      li{
+        margin-left: 20px;
+      }
+    }
+  }
+
+}
+

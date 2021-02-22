@@ -4,6 +4,7 @@ import { DashBoardContext } from './DashBoardContext'
 import PreContainerObj from '../../DevComponents/PreContainerObj'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+import DashboardHeader from './DashboardHeader'
 import AllCasesTable from './AllCasesTable'
 import OpenCasesTable from './OpenCasesTable'
 import ClosedCasesTable from './ClosedCasesTable'
@@ -34,11 +35,8 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      <h3>Complaints Data</h3>
-      <div className='top-data'>
-        <h6>Cases at a glance: </h6>
-      </div>
       <DashBoardContext.Provider value={data}>
+        <DashboardHeader />
         <Tabs defaultActiveKey="all-complaints" id="complaints-tabs">
           <Tab eventKey="all-complaints" title="All District Cases">
             <AllCasesTable />

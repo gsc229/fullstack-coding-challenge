@@ -34,7 +34,7 @@ const Menu = () => {
         className='ml-auto'
         onClick={handleLogOut}
         as={Link} to='#'>
-          Logout
+          <h6><strong>Logout</strong></h6>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

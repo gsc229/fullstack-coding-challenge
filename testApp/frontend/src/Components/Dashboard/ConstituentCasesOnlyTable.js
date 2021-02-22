@@ -8,7 +8,7 @@ const ConstituentCasesOnlyTable = () =>  {
 
   return (
     <div className='complaints-table-container'>
-      Constituent Cases - Total: {constituentCases.length}
+      <h6><strong>Constituent Cases - Total: {constituentCases.length}</strong></h6>
       <DataTable data={constituentCases} />
     </div>
   )

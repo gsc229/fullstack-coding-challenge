@@ -9,7 +9,7 @@ const OpenCasesTable = () => {
 
   return (
     <div className='complaints-table-container'>
-      Open Cases - Total: {openCases.length}
+      <h6><strong>Open Cases - Total: {openCases.length}</strong></h6>
       <DataTable data={openCases} />
     </div>
   )

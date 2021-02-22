@@ -50,12 +50,9 @@ const Dashboard = () => {
           <Tab eventKey="closed-cases" title="Closed Cases">
             <ClosedCasesTable />
           </Tab>
-          <Tab eventKey="top-complaint-types" title="Top Complaints">
-            Top Complaints
-          </Tab>
-          <Tab eventKey="contact" title="Data">
+          {/* <Tab eventKey="contact" title="Data">
             <PreContainerObj dataObj={data} />
-          </Tab>
+          </Tab> */}
         </Tabs>
       </DashBoardContext.Provider>
     </div>

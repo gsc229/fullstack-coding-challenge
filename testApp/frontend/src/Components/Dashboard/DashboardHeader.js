@@ -22,7 +22,7 @@ const DashboardHeader = () => {
             <li>Closed: {closedCases.length}</li>
           </ul>
           <ol className='top-types-list'>
-            <strong>Top 3 Complaint Types:</strong>
+            <strong>Top 3 Complaints:</strong>
             {topThree && topThree.map(type => (
               <li>{type.complaint_type} - {type.count}</li>
             ))}

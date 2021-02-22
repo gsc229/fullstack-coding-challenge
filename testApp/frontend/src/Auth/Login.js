@@ -51,7 +51,6 @@ const Login = () => {
     <div>
       <h4>Login</h4>
       <div className='login-form-container'>
-        {JSON.stringify({auth})}
         <Form 
         onSubmit={handleSubmit}
         className='login-form'>

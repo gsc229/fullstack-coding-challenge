@@ -34,15 +34,8 @@ const Menu = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to='/dashboard'>
-            Open Complaints
-          </Nav.Link>
-          <Nav.Link as={Link} to='/dashboard'>
-            Closed Complaints
-          </Nav.Link>
-        </Nav>
         <Nav 
+        className='ml-auto'
         onClick={handleLogOut}
         as={Link} to='#'>
           Logout

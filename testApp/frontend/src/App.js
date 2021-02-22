@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { UserContext } from './Auth/UserContext'
+import PrivateRoute from './Auth/PrivateRoute'
+import LoginPage from './Auth/LoginPage'
+import DashboardPage from './Pages/DashboardPage'
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 function App() {
+  const [auth, setAuth] = useState({
+    isLoading: false,
+    isAuthenticated: false
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+      <Switch>
+        <UserContext.Provider value={{auth, setAuth}} >
+          <Route path='/login' component={LoginPage}/>
+          <PrivateRoute exact path='/' auth={auth} component={DashboardPage} />
+        </UserContext.Provider>
+      </Switch>
+      
     </div>
   );
 }

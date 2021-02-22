@@ -1,8 +1,9 @@
 from django.urls import path
 from rest_framework import routers
-from .views import ComplaintViewSet, OpenCasesViewSet, ClosedCasesViewSet, TopComplaintTypeViewSet, ConsituentCasesViewSet
+from .views import ComplaintViewSet, OpenCasesViewSet, ClosedCasesViewSet, TopComplaintTypeViewSet, ConsituentCasesViewSet, UserProfileViewSet
 
 router = routers.SimpleRouter()
+router.register(r'user', UserProfileViewSet, basename='user')
 router.register(r'openCases', OpenCasesViewSet, basename='openCases')
 router.register(r'closedCases', ClosedCasesViewSet, basename='closedCases')
 router.register(r'constituentCases', ConsituentCasesViewSet, basename='constituentCases' )

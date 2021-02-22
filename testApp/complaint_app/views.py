@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 from .models import UserProfile, Complaint
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from .serializers import UserSerializer, UserProfileSerializer, ComplaintSerializer
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework import status
 from django.db.models import Count
 # Create your views here.
@@ -77,3 +79,10 @@ class UserProfileViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
   serializer_class = UserProfileSerializer
   queryset = UserProfile.objects.all()
+
+  @action(methods=['get'], detail=False,  url_path='get-profile')
+  def getByUsername(self, request):
+      userId = get_object_or_404(User, username=request.user).__getattribute__('id')
+      userprofile = self.queryset.get(pk=userId)
+      serializer = UserProfileSerializer(userprofile, many=False)
+      return Response(serializer.data, status=status.HTTP_200_OK)

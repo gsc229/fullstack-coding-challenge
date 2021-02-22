@@ -7,8 +7,6 @@ import nycclogo from '../images/nyc-seal-blue.png'
 
 const Menu = () => {
 
-  
-
   const { auth, setAuth } = useContext(UserContext)
 
   const handleLogOut = () => {
@@ -19,8 +17,6 @@ const Menu = () => {
       isAuthenticated: false
     })
   }
-
-
 
   return (
     <Navbar 

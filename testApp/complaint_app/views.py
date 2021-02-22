@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from .models import UserProfile, Complaint
+from django.contrib.auth.models import User
 from .serializers import UserSerializer, UserProfileSerializer, ComplaintSerializer
 from rest_framework.response import Response
 from rest_framework import status

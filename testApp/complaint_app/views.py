@@ -76,9 +76,3 @@ class UserProfileViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
   serializer_class = UserProfileSerializer
   queryset = UserProfile.objects.all()
-
-  # def list(self, request):
-  #   print(f'request.user: {request.data}')
-  #   queryset = self.queryset.filter(user=request.user)
-  #   serializer = UserProfileSerializer(queryset, many=False)
-  #   return Response({'success': True, 'data': serializer.data})

@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {
-
   const [auth, setAuth] = useState({
     isLoading: false,
     isAuthenticated: false
@@ -17,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-
+    
       <Switch>
         <UserContext.Provider value={{auth, setAuth}} >
           <Route path='/login' component={LoginPage}/>

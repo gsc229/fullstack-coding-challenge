@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { UserContext } from '../Auth/UserContext'
 import { Nav } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Link} from 'react-router-dom'
@@ -6,8 +7,17 @@ import nycclogo from '../images/nyc-seal-blue.png'
 
 const Menu = () => {
 
+  
+
+  const { auth, setAuth } = useContext(UserContext)
+
   const handleLogOut = () => {
     localStorage.removeItem('token')
+    setAuth({
+      ...auth,
+      isLoading: false,
+      isAuthenticated: false
+    })
   }
 
 
@@ -34,7 +44,7 @@ const Menu = () => {
         </Nav>
         <Nav 
         onClick={handleLogOut}
-        as={Link} to='/login'>
+        as={Link} to='#'>
           Logout
         </Nav>
       </Navbar.Collapse>

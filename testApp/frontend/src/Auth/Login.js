@@ -1,13 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { UserContext } from './UserContext'
 import axios from 'axios'
 import {loginUrl} from '../config/config'
 import { useHistory } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const Login = ({
-  setAuth
-}) => {
+const Login = () => {
+
+  const { auth, setAuth } = useContext(UserContext)
 
   const history = useHistory()
 
@@ -26,11 +27,20 @@ const Login = ({
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setAuth({
+      ...auth,
+      isLoading: true
+    })
     axios
     .post(loginUrl, credentials)
     .then(loginResponse => {
       localStorage.setItem('token', loginResponse.data.token)
       history.push('/')
+      setAuth({
+        ...auth,
+        isAuthenticated: true,
+        isLoading: false
+      })
     })
     .catch(loginError => {
       console.log({loginError})
@@ -41,6 +51,7 @@ const Login = ({
     <div>
       <h4>Login</h4>
       <div className='login-form-container'>
+        {JSON.stringify({auth})}
         <Form 
         onSubmit={handleSubmit}
         className='login-form'>

@@ -7,6 +7,7 @@ import Tab from 'react-bootstrap/Tab'
 import AllCasesTable from './AllCasesTable'
 import OpenCasesTable from './OpenCasesTable'
 import ClosedCasesTable from './ClosedCasesTable'
+import ConstituentCasesOnlyTable from './ConstituentCasesOnlyTable'
 
 const Dashboard = () => {
 
@@ -14,7 +15,8 @@ const Dashboard = () => {
   const [data, setData] = useState({
     complaints: [],
     openCases: [],
-    closedCases: [], 
+    closedCases: [],
+    constituentCases: [],
     topThreeComplaints: [],
     complaintTallies: []
   })
@@ -31,12 +33,18 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div>
+    <div className='dashboard'>
       <h3>Complaints Data</h3>
+      <div className='top-data'>
+        <h6>Cases at a glance: </h6>
+      </div>
       <DashBoardContext.Provider value={data}>
         <Tabs defaultActiveKey="all-complaints" id="complaints-tabs">
-          <Tab eventKey="all-complaints" title="All District">
+          <Tab eventKey="all-complaints" title="All District Cases">
             <AllCasesTable />
+          </Tab>
+          <Tab eventKey="constituent-cases" title="All Constituent Cases">
+            <ConstituentCasesOnlyTable />
           </Tab>
           <Tab eventKey="open-cases" title="Open Cases">
             <OpenCasesTable />

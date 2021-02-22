@@ -1,7 +1,9 @@
 @import './variables';
 @import './custom_bs.scss';
 
-
+.App {
+  text-align: center;
+}
 
 h1, h2, h3, h4, h5, h6{
   font-family: Georgia,Cambria,"Times New Roman",Times,serif;

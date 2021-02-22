@@ -7,8 +7,6 @@ import nycclogo from '../images/nyc-seal-blue.png'
 
 const Menu = () => {
 
-  
-
   const { auth, setAuth } = useContext(UserContext)
 
   const handleLogOut = () => {
@@ -19,8 +17,6 @@ const Menu = () => {
       isAuthenticated: false
     })
   }
-
-
 
   return (
     <Navbar 
@@ -34,18 +30,11 @@ const Menu = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to='/dashboard'>
-            Open Complaints
-          </Nav.Link>
-          <Nav.Link as={Link} to='/dashboard'>
-            Closed Complaints
-          </Nav.Link>
-        </Nav>
         <Nav 
+        className='ml-auto'
         onClick={handleLogOut}
         as={Link} to='#'>
-          Logout
+          <h6><strong>Logout</strong></h6>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

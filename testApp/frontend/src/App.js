@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   const [auth, setAuth] = useState({
     isLoading: false,
-    isAuthenticated: false
+    isAuthenticated: localStorage.getItem('token') ? true : false
   })
 
   return (

@@ -85,4 +85,4 @@ class UserProfileViewSet(viewsets.ModelViewSet):
       userId = get_object_or_404(User, username=request.user).__getattribute__('id')
       userprofile = self.queryset.get(pk=userId)
       serializer = UserProfileSerializer(userprofile, many=False)
-      return Response(serializer.data, status=status.HTTP_200_OK)
+      return Response({'success': True,  'data': serializer.data}, status=status.HTTP_200_OK)

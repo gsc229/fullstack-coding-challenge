@@ -3,6 +3,10 @@
   margin-top: 30px;
 }
 .dashboard-header{
+  h3{
+    //background-color: lavender;
+    text-align: center;
+  }
   h5{
     font-weight: 600;
   }
@@ -10,7 +14,8 @@
     background-color: $nycc-blue;
     color: white;
     padding: 10px;
-    margin: 10px auto;
+    margin: 30px auto;
+    width: fit-content;
     border-radius: 2px;
     .list-container{
       display: flex;
@@ -19,10 +24,12 @@
       strong{
         font-weight: 600;
       }
+      .at-a-glance-list{
+        list-style: circle;
+      }
       .at-a-glance-list, .top-types-list{
         padding: 0;
         margin-right: 40px;
-        //list-style: none;
         li{
           margin-left: 20px;
         }
@@ -36,8 +43,8 @@
 
 .complaints-table-container{
   h6{
-    //background-color: $nycc-blue;
-    //color: white;
+    background-color: $nycc-blue;
+    color: white;
     padding: 5px;
     text-align: center;
     width: 100%;

@@ -24,7 +24,7 @@ const DashboardHeader = () => {
           <ol className='top-types-list'>
             <strong>Top 3 Complaints:</strong>
             {topThree && topThree.map(type => (
-              <li>{type.complaint_type} - {type.count}</li>
+              <li key={type.complaint_type} >{type.complaint_type} - {type.count}</li>
             ))}
           </ol>
         </div>

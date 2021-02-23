@@ -17,9 +17,9 @@ const DataTable = ({complaintsData}) => {
     footerGroups,
     rows, 
     prepareRow
-  } = useTable({columns, data})
+  } = useTable({columns, data: [...data]})
 
-  console.log({headerGroups})
+  
 
 
   return (
@@ -37,13 +37,14 @@ const DataTable = ({complaintsData}) => {
       </thead>
       <tbody>
       {rows.map((row, i) => {
-          console.log({row})
+          /* console.log({row}) */
           row.values.closedate = row.values.closedate ? `Closed ${row.values.closedate}` : 'Open'
           row.values.council_dist = row.values.council_dist ? row.values.council_dist : 'not provided'
           row.values.city = row.values.city ? row.values.city : 'not provided'
           row.values.borough = row.values.borough ? row.values.borough : 'not provided'
           row.values.community_board = row.values.community_board === ' ' ? 'not provided' : row.values.community_board 
           row.values.zip = row.values.zip ? row.values.zip : 'not provided'
+          
           prepareRow(row)
           return (
             <tr {...row.getRowProps()}>

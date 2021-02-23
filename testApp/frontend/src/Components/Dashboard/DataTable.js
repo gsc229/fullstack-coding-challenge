@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import Table from 'react-bootstrap/Table'
-import { useTable, useGlobalFilter } from 'react-table'
+import { useTable, useGlobalFilter, useSortBy } from 'react-table'
 import { COLUMNS } from './helpers/columns'
 import GlobalFilter from './GlobalFilter'
 
@@ -21,7 +21,9 @@ const DataTable = ({complaintsData}) => {
     setGlobalFilter
   } = useTable(
     {columns, data}, 
-    useGlobalFilter)
+    useGlobalFilter,
+    useSortBy
+    )
 
   const { globalFilter } = state
 
@@ -35,7 +37,17 @@ const DataTable = ({complaintsData}) => {
             {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  {column.isSorted 
+                  ? 
+                  (column.isSortedDesc 
+                  ? <span className='sort-span'> &#x25BC;&nbsp; </span> 
+                  : 
+                  <span className='sort-span'> &#x25B2;&nbsp; </span>) 
+                  : 
+                  <span className='sort-span' >sort</span>}
+                </th>
               ))}
             </tr>
             ))}

@@ -1,5 +1,5 @@
 .user-profile{
-  background-color: $nycc-blue;
+  background-color: #73B2D3;
   padding: 20px;
   border-radius: 2px;
   width: fit-content;
@@ -10,7 +10,8 @@
   color: white;
   ul{
     list-style: none;
-    padding-left: 0;
+    padding: 10px;
+    border: 1px solid white;
     strong{
       color: aliceblue;
     }

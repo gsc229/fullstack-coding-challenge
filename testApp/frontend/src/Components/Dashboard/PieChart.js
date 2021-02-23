@@ -9,6 +9,8 @@ const PieChart = () => {
 
   const { complaintTallies } = useContext(DashBoardContext)
 
+  const data = useMemo(() =>  pieConverter(complaintTallies), [])
+
   const { width } = useWindowSize()
 
   const getStyles = () => {
@@ -38,8 +40,6 @@ const PieChart = () => {
     }
     }
   }
-
-  const data = pieConverter(complaintTallies)
 
 
   return (

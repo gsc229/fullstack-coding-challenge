@@ -42,6 +42,23 @@
 
 
 .complaints-table-container{
+  .global-filter{
+    margin: 10px auto;
+  }
+  .column-filter{
+    margin: 10px auto;
+  }
+  .sort-span{
+    font-weight: 100;
+    font-size: 12px;
+    width: fit-content;
+    border: 1px solid $nycc-blue;
+    border-radius: 2px;
+    padding: 0 3px 2px 3px;
+    text-align: center;
+    margin-left: 20px;
+    color: blue;
+  }
   h6{
     background-color: $nycc-blue;
     color: white;
@@ -54,4 +71,3 @@
     font-weight: 700;
   }
 }
-

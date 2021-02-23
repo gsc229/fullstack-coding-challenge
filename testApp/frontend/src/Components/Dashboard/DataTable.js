@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import Table from 'react-bootstrap/Table'
-import { useTable } from 'react-table'
+import { useTable, useGlobalFilter, useSortBy, useFilters } from 'react-table'
 import { COLUMNS } from './helpers/columns'
-import { complaintFieldTitle } from './helpers/complatintFieldTitle'
+import GlobalFilter from './GlobalFilter'
 
 const DataTable = ({complaintsData}) => {
 
@@ -16,64 +16,89 @@ const DataTable = ({complaintsData}) => {
     headerGroups,
     footerGroups,
     rows, 
-    prepareRow
-  } = useTable({columns, data: [...data]})
+    prepareRow,
+    state,
+    setGlobalFilter
+  } = useTable(
+    {columns, data}, 
+    useFilters,
+    useGlobalFilter,
+    useSortBy
+    )
+
+  const { globalFilter } = state
 
   return (
-    <Table responsive striped bordered hover size="sm" {...getTableProps}>
-      <thead>
-          
-          {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+    <>
+      <GlobalFilter filter={ globalFilter } setFilter={ setGlobalFilter } />
+      
+      <Table responsive striped bordered hover size="sm" {...getTableProps}>
+        <thead>
+            {headerGroups.map((headerGroup, i) => (
+            <tr key={`A-${i}`} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, j) => (
+                <th key={`A-${i}-${j}`} {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  {column.isSorted 
+                  ? 
+                  (column.isSortedDesc 
+                  ? <span className='sort-span'> &#x25BC;&nbsp; </span> 
+                  : 
+                  <span className='sort-span'> &#x25B2;&nbsp; </span>) 
+                  : 
+                  <span className='sort-span' >sort</span>}
+                  <div>
+                    {column.canFilter ? column.render('Filter') : null}
+                  </div>
+                </th>
+              ))}
+            </tr>
             ))}
-          </tr>
-          ))}
-        
-      </thead>
-      <tbody>
-      {rows.map((row, i) => {
-          /* console.log({row}) */
-          row.values.closedate = row.values.closedate ? `Closed ${row.values.closedate}` : 'Open'
-          row.values.council_dist = row.values.council_dist ? row.values.council_dist : 'not provided'
-          row.values.city = row.values.city ? row.values.city : 'not provided'
-          row.values.borough = row.values.borough ? row.values.borough : 'not provided'
-          row.values.community_board = row.values.community_board === ' ' ? 'not provided' : row.values.community_board 
-          row.values.zip = row.values.zip ? row.values.zip : 'not provided'
           
-          prepareRow(row)
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return (
-                  <td {...cell.getCellProps()}>
-                    {cell.render('Cell')}
-                  </td>
-                )
-              })}
-            </tr>
-          )
-        })}
-      </tbody>
-      <tfoot>
-        {
-          footerGroups.map(footerGroup => (
-            <tr {...footerGroup.getFooterProps}>
-              {
-                footerGroup.headers.map(column =>(
-                  <td{...column.getFooterProps}>
-                  {
-                    column.render('Footer')
-                  }
-                  </td>
-                ))
-              }
-            </tr>
-          ))
-        }
-      </tfoot>
-    </Table>
+        </thead>
+
+        <tbody>
+
+        {rows.map((row, i) => {
+            
+            prepareRow(row)
+            return (
+              <tr key={`B-${i}`} {...row.getRowProps()}>
+                {row.cells.map((cell, j )=> {
+                  return (
+                    <td key={`B-${i}-${j}`} {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+
+        </tbody>
+
+        <tfoot>
+
+          {
+            footerGroups.map((footerGroup, i) => (
+              <tr key={`C-${i}`} {...footerGroup.getFooterProps}>
+                {
+                  footerGroup.headers.map((column, j) =>(
+                    <td key={`C-${i}-${j}`} {...column.getFooterProps}>
+                    {
+                      column.render('Footer')
+                    }
+                    </td>
+                  ))
+                }
+              </tr>
+            ))
+          }
+
+        </tfoot>
+
+      </Table>
+    </>
   )
 }
 

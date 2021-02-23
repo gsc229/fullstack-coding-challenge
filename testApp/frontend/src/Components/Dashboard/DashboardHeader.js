@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
 import { DashBoardContext } from '../../Pages/DashBoardContext'
+import { UserContext } from '../../Auth/UserContext'
 
 const DashboardHeader = () => {
 
   const { constituentCases, complaints, openCases, closedCases, complaintTallies } = useContext(DashBoardContext)
+  const { auth } = useContext(UserContext)
 
   const topThree = complaintTallies.slice(0, 3)
 
 
   return (
     <div className='dashboard-header' >
-      <h3>Complaints Data</h3>
+      <h3>Complaint Data  for District {auth.profile.district}</h3>
       <div className='at-a-glance-container'>
         <h5>Cases at a glance: </h5>
         <div className='list-container'>

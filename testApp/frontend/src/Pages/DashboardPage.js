@@ -9,8 +9,6 @@ import Alert from 'react-bootstrap/Alert'
 
 const DashboardPage = () => {
 
-  
-
   const [data, setData] = useState({
     complaints: [],
     openCases: [],

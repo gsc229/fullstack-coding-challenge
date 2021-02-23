@@ -52,7 +52,7 @@ const Menu = () => {
           </Nav.Link>
           <OverlayTrigger
           placement='bottom'
-          overlay={<ToolTip><h6><strong>Logout</strong></h6></ToolTip>}>
+          overlay={<ToolTip id='logout-tooltip'><h6 style={{padding: 0, width: 'fit-content', margin:'0'}}><strong>Logout</strong></h6></ToolTip>}>
             <Nav.Link
             className='logout-link'
             onClick={handleLogOut}>

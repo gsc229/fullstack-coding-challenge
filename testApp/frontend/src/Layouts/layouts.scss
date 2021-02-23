@@ -41,8 +41,6 @@
     }
   }
 
-  
-
   .logout-link{
     display: flex;
     align-items: center;
@@ -51,6 +49,18 @@
     .log-out-icon{
       margin-left: 5px;
     }
+  }
+}
+
+
+#logout-tooltip{
+  .arrow{
+      &::before {
+        border-bottom: 5px solid $nycc-blue;
+      }
+  }
+  .tooltip-inner{
+    background-color: $nycc-blue;
   }
 }
 

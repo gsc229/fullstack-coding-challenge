@@ -19,9 +19,6 @@ const DataTable = ({complaintsData}) => {
     prepareRow
   } = useTable({columns, data: [...data]})
 
-  
-
-
   return (
     <Table responsive striped bordered hover size="sm" {...getTableProps}>
       <thead>

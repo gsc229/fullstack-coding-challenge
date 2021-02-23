@@ -1,6 +1,6 @@
 import React from 'react'
 import { complaintFieldTitle } from './complatintFieldTitle'
-import ColumnFilter from '../ColumnFilter'
+/* import ColumnFilter from '../ColumnFilter' */
 
 
 export const COLUMNS = Object.entries(complaintFieldTitle)
@@ -24,4 +24,3 @@ export const COLUMNS = Object.entries(complaintFieldTitle)
   }
 })
 
-console.log({COLUMNS})

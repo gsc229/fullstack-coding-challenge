@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import Table from 'react-bootstrap/Table'
-import { useTable, useGlobalFilter, useSortBy, useFilters } from 'react-table'
+import { useTable, useGlobalFilter, useSortBy, /* useFilters */ } from 'react-table'
 import { COLUMNS } from './helpers/columns'
 import GlobalFilter from './GlobalFilter'
 
@@ -47,9 +47,9 @@ const DataTable = ({complaintsData}) => {
                   <span className='sort-span'> &#x25B2;&nbsp; </span>) 
                   : 
                   <span className='sort-span' >sort</span>}
-                  <div>
+                  {/* <div>
                     {column.canFilter ? column.render('Filter') : null}
-                  </div>
+                  </div> */}
                 </th>
               ))}
             </tr>

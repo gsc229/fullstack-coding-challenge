@@ -37,7 +37,7 @@ const Menu = () => {
           <Nav.Link
           to='/'
           as={Link}>
-            Dashboard
+            {auth.profile.district}'s Dashboard
           </Nav.Link>
         </Nav>
         

@@ -31,9 +31,9 @@ const DataTable = ({complaintsData}) => {
   return (
     <>
       <GlobalFilter filter={ globalFilter } setFilter={ setGlobalFilter } />
+      
       <Table responsive striped bordered hover size="sm" {...getTableProps}>
         <thead>
-            
             {headerGroups.map((headerGroup, i) => (
             <tr key={`A-${i}`} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, j) => (

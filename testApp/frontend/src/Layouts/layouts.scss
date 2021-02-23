@@ -17,5 +17,29 @@
     }
     
   }
+
+  .icon, h6{
+    color: $nycc-blue;
+    &:hover{
+      color: black;
+    }
+  }
+
+  .profile-icon{
+    font-size: 30px;
+  }
+
+  .logout-link{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    h6{
+      position: relative;
+      top: 3px;
+    }
+    .log-out-icon{
+      margin-left: 5px;
+    }
+  }
 }
 

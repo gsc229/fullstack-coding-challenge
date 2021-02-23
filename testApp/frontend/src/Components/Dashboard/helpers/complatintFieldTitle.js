@@ -11,3 +11,11 @@ export const complaintFieldTitle = {
   city: {title: "City", order: 9},
   community_board: {title: "Comm. Board", order: 10}
 }
+
+export const csvHeaders = Object
+.entries(complaintFieldTitle)
+.sort((a, b) => ( a[1].order - b[1].order ))
+.map(entry => ({label: entry[1].title, key: entry[0] }))
+
+
+console.log({csvHeaders})

@@ -21,7 +21,7 @@ const DataTable = ({complaintsData}) => {
     setGlobalFilter
   } = useTable(
     {columns, data}, 
-    useFilters,
+    /* useFilters, */
     useGlobalFilter,
     useSortBy
     )

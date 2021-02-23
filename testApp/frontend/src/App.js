@@ -29,7 +29,7 @@ function App() {
 
     getProfile()
 
-  }, [])
+  }, [auth.isAuthenticated])
 
   return (
     <div className="App">

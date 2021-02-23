@@ -31,6 +31,13 @@ const Menu = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>
+        <Nav className='mr-auto'>
+          <Nav.Link
+          to='/'
+          as={Link}>
+            User Dashboard
+          </Nav.Link>
+        </Nav>
         
         <Nav 
         className='ml-auto'>
@@ -39,12 +46,13 @@ const Menu = () => {
           to={'/user-profile'}
           className='profile-link'>
             <ProfileIcon />
+            <h6><strong>{auth.profile.username}</strong></h6>
           </Nav.Link>
           <Nav.Link
           className='logout-link'
           onClick={handleLogOut}>
-            <h6><strong>Logout</strong></h6>
             <LogOutIcon />
+            <h6><strong>Logout</strong></h6>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

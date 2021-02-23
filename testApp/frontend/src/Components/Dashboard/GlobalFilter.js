@@ -17,7 +17,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
       Search: &nbsp;
       <input
       onClick={e => e.stopPropagation()}
-      placeholder='global search'
+      placeholder='all cells'
       value={value || ''}
       onChange={ e =>{
         setValue(e.target.value)

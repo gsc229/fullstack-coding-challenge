@@ -1,6 +1,6 @@
 import React from 'react'
 import { complaintFieldTitle } from './complatintFieldTitle'
-import ColumnFilter from '../ColumnFilter'
+/* import ColumnFilter from '../ColumnFilter' */
 
 
 export const COLUMNS = Object.entries(complaintFieldTitle)
@@ -10,7 +10,7 @@ export const COLUMNS = Object.entries(complaintFieldTitle)
     Header: col[1].title, 
     Footer: col[1].title, 
     accessor: col[0],
-    Filter: ColumnFilter,
+    /* Filter: ColumnFilter, */
     Cell: function({ value }){
       if(col[0] === 'closedate'){
         if(!value) return <span style={{color: '#D8D8D8'}}>Open</span>
@@ -24,4 +24,3 @@ export const COLUMNS = Object.entries(complaintFieldTitle)
   }
 })
 
-console.log({COLUMNS})

@@ -29,7 +29,10 @@ const Menu = () => {
         <img  
         className='navbar-nycc-brand'
         src={nycclogo} alt=""/>
-        <h4>New York City Council</h4>
+        <div className='brand-text'>
+          <h4>New York City Council</h4>
+          <p>{auth.profile.first_name} {auth.profile.last_name}, District: {auth.profile.district}</p>
+        </div>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>

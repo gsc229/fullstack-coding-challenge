@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { DashBoardContext } from '../Pages/DashBoardContext'
 
 const PreContainerObj = ({
   dataObj,
   many=true
 }) => {
 
+  const { constituentCases, complaints, openCases, closedCases, complaintTallies } = useContext(DashBoardContext)
+
+  if(!dataObj) dataObj = {
+    constituentCases, 
+    complaints, 
+    openCases, 
+    closedCases, 
+    complaintTallies 
+  }
 
   return (
     <div className='pre-container'>

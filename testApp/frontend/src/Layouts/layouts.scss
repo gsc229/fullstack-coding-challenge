@@ -12,9 +12,18 @@
       max-height: 50px;
       margin-right: 10px;
     }
-    h4{
-      position: relative;
-      top: 3px;
+    .brand-text{
+      h4{
+        position: relative;
+        top: 3px;
+        margin: 0;
+      }
+      p{
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+        font-weight: 350;
+      }
     }
     
   }

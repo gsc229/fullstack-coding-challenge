@@ -30,9 +30,9 @@ const Dashboard = () => {
             <Tab eventKey="closed-cases" title={`Dist. ${auth.profile.district} Closed Cases`}>
               <ClosedCasesTable />
             </Tab>
-            {/* <Tab eventKey="contact" title="Data">
+            <Tab eventKey="contact" title="Data">
               <PreContainerObj />
-            </Tab> */}
+            </Tab>
           </Tabs>
     </div>
   )

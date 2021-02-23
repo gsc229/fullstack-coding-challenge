@@ -75,6 +75,23 @@
 
 .complaints-table-container{
   min-height: 400px;
+  #csv-tooltip{
+    .arrow{
+        &::before {
+          border-bottom: 5px solid $nycc-blue;
+        }
+    }
+    .tooltip-inner{
+      background-color: $nycc-blue;
+    }
+  }
+  
+  .csv-link{
+    margin-left: 20px;
+    .icon{
+      color: white;
+    }
+  }
   .global-filter{
     margin: 10px auto;
   }

@@ -4,6 +4,7 @@ import { Nav } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Link} from 'react-router-dom'
 import nycclogo from '../images/nyc-seal-blue.png'
+import { ProfileIcon, LogOutIcon } from '../Components/Icons/Icons'
 
 const Menu = () => {
 
@@ -30,11 +31,29 @@ const Menu = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>
+        <Nav className='mr-auto'>
+          <Nav.Link
+          to='/'
+          as={Link}>
+            User Dashboard
+          </Nav.Link>
+        </Nav>
+        
         <Nav 
-        className='ml-auto'
-        onClick={handleLogOut}
-        as={Link} to='#'>
-          <h6><strong>Logout</strong></h6>
+        className='ml-auto'>
+          <Nav.Link 
+          as={Link}
+          to={'/user-profile'}
+          className='profile-link'>
+            <ProfileIcon />
+            <h6><strong>{auth.profile.username}</strong></h6>
+          </Nav.Link>
+          <Nav.Link
+          className='logout-link'
+          onClick={handleLogOut}>
+            <LogOutIcon />
+            <h6><strong>Logout</strong></h6>
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

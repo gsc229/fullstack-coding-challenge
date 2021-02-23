@@ -1,6 +1,7 @@
 .layout-container{
   min-height: 500px;
   padding-top: 85px;
+  text-align: left;
 }
 
 .layout-navbar{
@@ -16,6 +17,43 @@
       top: 3px;
     }
     
+  }
+
+  .icon, h6{
+    color: $nycc-blue;
+    &:hover{
+      color: black;
+    }
+  }
+
+  .profile-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 5px;
+    width: fit-content;
+    .profile-icon{
+      font-size: 25px;
+    }
+    h6{
+      font-size: 12px;
+    }
+  }
+
+  
+
+  .logout-link{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    h6{
+      position: relative;
+      top: 3px;
+    }
+    .log-out-icon{
+      margin-left: 5px;
+    }
   }
 }
 

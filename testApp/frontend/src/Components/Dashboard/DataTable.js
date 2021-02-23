@@ -1,37 +1,78 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Table from 'react-bootstrap/Table'
+import { useTable } from 'react-table'
+import { COLUMNS } from './helpers/columns'
 import { complaintFieldTitle } from './helpers/complatintFieldTitle'
 
-const DataTable = ({data}) => {
+const DataTable = ({complaintsData}) => {
+
+
+  const columns = useMemo(() => COLUMNS, []) 
+  const data = useMemo(() => complaintsData, [])
+
+  const { 
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    footerGroups,
+    rows, 
+    prepareRow
+  } = useTable({columns, data: [...data]})
+
   return (
-    <Table responsive striped bordered hover size="sm">
+    <Table responsive striped bordered hover size="sm" {...getTableProps}>
       <thead>
-        <tr>
-          <th>#</th>
-          {Object.values(complaintFieldTitle)
-          .sort((a, b) => a.order - b.order)
-          .map(colHeading => <th key={colHeading.title}>{colHeading.title}</th>)}
-        </tr>
+          
+          {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+            ))}
+          </tr>
+          ))}
+        
       </thead>
       <tbody>
-        {data && data.map((complaint, idx )=> (
-          <tr 
-          key={complaint.unique_key}>
-            <td>{idx + 1}</td>
-            <td>{complaint.unique_key}</td>
-            <td>{complaint.account}</td>
-            <td>{complaint.council_dist ? complaint.council_dist : 'n/a'}</td>
-            <td>{complaint.complaint_type}</td>
-            <td>{complaint.opendate}</td>
-            <td>{complaint.closedate ? <span>Closed<br/>{complaint.closedate}</span> : 'Open'}</td>
-            <td>{complaint.descriptor}</td>
-            <td>{complaint.zip}</td>
-            <td>{complaint.borough}</td>
-            <td>{complaint.city}</td>
-            <td>{complaint.community_board}</td>
-          </tr>
-        ))}
+      {rows.map((row, i) => {
+          /* console.log({row}) */
+          row.values.closedate = row.values.closedate ? `Closed ${row.values.closedate}` : 'Open'
+          row.values.council_dist = row.values.council_dist ? row.values.council_dist : 'not provided'
+          row.values.city = row.values.city ? row.values.city : 'not provided'
+          row.values.borough = row.values.borough ? row.values.borough : 'not provided'
+          row.values.community_board = row.values.community_board === ' ' ? 'not provided' : row.values.community_board 
+          row.values.zip = row.values.zip ? row.values.zip : 'not provided'
+          
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return (
+                  <td {...cell.getCellProps()}>
+                    {cell.render('Cell')}
+                  </td>
+                )
+              })}
+            </tr>
+          )
+        })}
       </tbody>
+      <tfoot>
+        {
+          footerGroups.map(footerGroup => (
+            <tr {...footerGroup.getFooterProps}>
+              {
+                footerGroup.headers.map(column =>(
+                  <td{...column.getFooterProps}>
+                  {
+                    column.render('Footer')
+                  }
+                  </td>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tfoot>
     </Table>
   )
 }

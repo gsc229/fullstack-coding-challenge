@@ -10,9 +10,6 @@ import ConstituentCasesOnlyTable from './ConstituentCasesOnlyTable'
 
 const Dashboard = () => {
 
-
-  
-
   return (
     <div className='dashboard'>
         <DashboardHeader />

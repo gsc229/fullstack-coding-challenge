@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { DashBoardContext } from './DashBoardContext'
+import { DashBoardContext } from '../../Pages/DashBoardContext'
 import DataTable from './DataTable'
 
 const OpenCasesTable = () => {

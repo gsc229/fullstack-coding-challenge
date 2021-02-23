@@ -26,6 +26,17 @@ const PieChart = () => {
           itemHeight: 26
         }
       }
+    } else if(width < 550){
+      return{
+        margin: { top: 40, right: 0, bottom: 100, left: 0 },
+        legend: {
+          translateX: -150,
+          translateY: 62,
+          itemsSpacing: 15,
+          itemWidth: 78,
+          itemHeight: 26
+        }
+      }
     } else{
       
     return{

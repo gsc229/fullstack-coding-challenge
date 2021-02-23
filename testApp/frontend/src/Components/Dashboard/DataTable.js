@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import Table from 'react-bootstrap/Table'
-import { useTable, useGlobalFilter, useSortBy } from 'react-table'
+import { useTable, useGlobalFilter, useSortBy, useFilters } from 'react-table'
 import { COLUMNS } from './helpers/columns'
 import GlobalFilter from './GlobalFilter'
 
@@ -21,6 +21,7 @@ const DataTable = ({complaintsData}) => {
     setGlobalFilter
   } = useTable(
     {columns, data}, 
+    useFilters,
     useGlobalFilter,
     useSortBy
     )
@@ -29,15 +30,14 @@ const DataTable = ({complaintsData}) => {
 
   return (
     <>
-      
       <GlobalFilter filter={ globalFilter } setFilter={ setGlobalFilter } />
       <Table responsive striped bordered hover size="sm" {...getTableProps}>
         <thead>
             
-            {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+            {headerGroups.map((headerGroup, i) => (
+            <tr key={`A-${i}`} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, j) => (
+                <th key={`A-${i}-${j}`} {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   {column.isSorted 
                   ? 
@@ -47,21 +47,26 @@ const DataTable = ({complaintsData}) => {
                   <span className='sort-span'> &#x25B2;&nbsp; </span>) 
                   : 
                   <span className='sort-span' >sort</span>}
+                  <div>
+                    {column.canFilter ? column.render('Filter') : null}
+                  </div>
                 </th>
               ))}
             </tr>
             ))}
           
         </thead>
+
         <tbody>
+
         {rows.map((row, i) => {
             
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
+              <tr key={`B-${i}`} {...row.getRowProps()}>
+                {row.cells.map((cell, j )=> {
                   return (
-                    <td {...cell.getCellProps()}>
+                    <td key={`B-${i}-${j}`} {...cell.getCellProps()}>
                       {cell.render('Cell')}
                     </td>
                   )
@@ -69,14 +74,17 @@ const DataTable = ({complaintsData}) => {
               </tr>
             )
           })}
+
         </tbody>
+
         <tfoot>
+
           {
-            footerGroups.map(footerGroup => (
-              <tr {...footerGroup.getFooterProps}>
+            footerGroups.map((footerGroup, i) => (
+              <tr key={`C-${i}`} {...footerGroup.getFooterProps}>
                 {
-                  footerGroup.headers.map(column =>(
-                    <td{...column.getFooterProps}>
+                  footerGroup.headers.map((column, j) =>(
+                    <td key={`C-${i}-${j}`} {...column.getFooterProps}>
                     {
                       column.render('Footer')
                     }
@@ -86,7 +94,9 @@ const DataTable = ({complaintsData}) => {
               </tr>
             ))
           }
+
         </tfoot>
+
       </Table>
     </>
   )

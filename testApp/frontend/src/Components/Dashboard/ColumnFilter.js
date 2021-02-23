@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useAsyncDebounce } from 'react-table'
 
+const ColumnFilter = ({ column }) => {
 
-const GlobalFilter = ({ filter, setFilter }) => {
+  const { filterValue, setFilter } = column
 
-  const [value, setValue] = useState(filter)
+  const [value, setValue] = useState(filterValue)
 
   // for large data sets debouncing will slow down search execution triggered by keyup events
   // the time paramer is the time it takes to execute the search after the user has finished typing
@@ -13,18 +14,17 @@ const GlobalFilter = ({ filter, setFilter }) => {
   }, 200)
 
   return (
-    <div className='global-filter'>
-      Search: &nbsp;
+    <div className='column-filter'>
       <input
-      onClick={e => e.stopPropagation()}
-      placeholder='global search'
-      value={value || ''}
-      onChange={ e =>{
+      onClick={ e => e.stopPropagation()}
+      placeholder='column search' 
+      onChange={ e => {
         setValue(e.target.value)
         onChange(e.target.value)
-      }}/>
+      }}
+      value={ filterValue || '' }/>
     </div>
   )
 }
 
-export default GlobalFilter
+export default ColumnFilter

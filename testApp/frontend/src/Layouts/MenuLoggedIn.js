@@ -5,6 +5,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import {Link} from 'react-router-dom'
 import nycclogo from '../images/nyc-seal-blue.png'
 import { ProfileIcon, LogOutIcon } from '../Components/Icons/Icons'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import ToolTip from 'react-bootstrap/Tooltip'
 
 const Menu = () => {
 
@@ -35,7 +37,7 @@ const Menu = () => {
           <Nav.Link
           to='/'
           as={Link}>
-            User Dashboard
+            Dashboard
           </Nav.Link>
         </Nav>
         
@@ -48,12 +50,15 @@ const Menu = () => {
             <ProfileIcon />
             <h6><strong>{auth.profile.username}</strong></h6>
           </Nav.Link>
-          <Nav.Link
-          className='logout-link'
-          onClick={handleLogOut}>
-            <LogOutIcon />
-            <h6><strong>Logout</strong></h6>
-          </Nav.Link>
+          <OverlayTrigger
+          placement='bottom'
+          overlay={<ToolTip id='logout-tooltip'><h6 style={{padding: 0, width: 'fit-content', margin:'0'}}><strong>Logout</strong></h6></ToolTip>}>
+            <Nav.Link
+            className='logout-link'
+            onClick={handleLogOut}>
+              <LogOutIcon />
+            </Nav.Link>
+          </OverlayTrigger>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

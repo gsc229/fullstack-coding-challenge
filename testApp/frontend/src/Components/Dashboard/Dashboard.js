@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { getAllComplaintData } from '../../Api/getComplaintData'
-import { DashBoardContext } from './DashBoardContext'
+import React from 'react'
 import PreContainerObj from '../../DevComponents/PreContainerObj'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
@@ -13,29 +11,10 @@ import ConstituentCasesOnlyTable from './ConstituentCasesOnlyTable'
 const Dashboard = () => {
 
 
-  const [data, setData] = useState({
-    complaints: [],
-    openCases: [],
-    closedCases: [],
-    constituentCases: [],
-    topThreeComplaints: [],
-    complaintTallies: []
-  })
-
-  useEffect(() => {
-
-    const getNewData = async() => {
-      const newData = await  getAllComplaintData()
-      setData(newData)
-    }
-
-    getNewData()
-
-  }, [])
+  
 
   return (
     <div className='dashboard'>
-      <DashBoardContext.Provider value={data}>
         <DashboardHeader />
         <Tabs defaultActiveKey="all-complaints" id="complaints-tabs">
           <Tab eventKey="all-complaints" title="All District Cases">
@@ -54,7 +33,6 @@ const Dashboard = () => {
             <PreContainerObj dataObj={data} />
           </Tab> */}
         </Tabs>
-      </DashBoardContext.Provider>
     </div>
   )
 }

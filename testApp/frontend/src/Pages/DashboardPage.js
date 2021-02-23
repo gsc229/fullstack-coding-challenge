@@ -4,6 +4,7 @@ import { DashBoardContext } from './DashBoardContext'
 import LayoutLoggedIn from '../Layouts/LayoutLoggedIn'
 import Dashboard from '../Components/Dashboard/Dashboard'
 import LightSpinner from '../Components/Spinners/LightSpinner'
+import Alert from 'react-bootstrap/Alert'
 
 
 const DashboardPage = () => {
@@ -44,15 +45,16 @@ const DashboardPage = () => {
   }, [])
 
 
-  
-
   return (
     <LayoutLoggedIn>
       <div className='dashboard-page-container'>
         <DashBoardContext.Provider value={data}>
          {!data.isLoading && <Dashboard />}
          {data.isLoading && <LightSpinner text='Loading Dashboard...' />}
-         {data.errorMessage && <p>{data.errorMessage}</p>}
+         {data.errorMessage && 
+         <Alert variant='danger'>
+          {data.errorMessage}
+          </Alert>}
         </DashBoardContext.Provider>
       </div>    
     </LayoutLoggedIn>

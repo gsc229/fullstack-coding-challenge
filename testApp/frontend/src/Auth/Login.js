@@ -47,12 +47,16 @@ const Login = () => {
     })
     .catch(loginError => {
       console.log({loginError})
-      setLoginErroMessage('Username or password is incorrect.')
+      setAuth({
+        ...auth,
+        isLoading: false,
+        errorMessage: 'Username or password is incorrect.'
+      })
     })
   }
 
-  if(loginErrorMessage){
-    setTimeout(() => { setLoginErroMessage('') }, 4000)
+  if(auth.errorMessage){
+    setTimeout(() => { setAuth({...auth, errorMessage: ''}) }, 4000)
   }
 
 
@@ -82,7 +86,7 @@ const Login = () => {
             value={credentials.password}
             type="password" placeholder="Password" />
           </Form.Group>
-          {loginErrorMessage && <Alert variant='danger'>{loginErrorMessage}</Alert>}
+          {auth.errorMessage && <Alert variant='danger'>{auth.errorMessage}</Alert>}
           <Button 
           onSubmit={handleSubmit}
           type="submit">

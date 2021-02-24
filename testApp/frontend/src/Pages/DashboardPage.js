@@ -23,7 +23,7 @@ const DashboardPage = () => {
   useEffect(() => {
 
     const getNewData = async() => {
-      const newData = await  getAllComplaintData(true)
+      const newData = await  getAllComplaintData()
       if(newData){
           setData({
             ...newData,
@@ -47,7 +47,7 @@ const DashboardPage = () => {
     <LayoutLoggedIn>
       <div className='dashboard-page-container page'>
         <DashBoardContext.Provider value={data}>
-         {!data.isLoading && <Dashboard />}
+         {!data.isLoading && !data.errorMessage && <Dashboard />}
          {data.isLoading && <LightSpinner text='Loading Dashboard...' />}
          {data.errorMessage && 
          <Alert variant='danger'>

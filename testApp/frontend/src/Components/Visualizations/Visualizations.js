@@ -4,6 +4,7 @@ import PreContainerVisData  from '../../DevComponents/PreContainerVisData'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import NewYorkCity from './NewYorkCity'
+import ZipCodeVis from './ZipCodeVis'
 
 const Visualizations = () => {
 
@@ -14,12 +15,13 @@ const Visualizations = () => {
 
   return (
     <div className='visualizations-container'>
-      <Tabs defaultActiveKey='complaint-totals'  id='visualizations-tabs'>
+      <Tabs defaultActiveKey='zip-code-totals'  id='visualizations-tabs'>
         <Tab eventKey='borough-totals' title='Borough' >
             Borough Totals
         </Tab>
         <Tab eventKey='zip-code-totals' title='Zip Code' >
             Zip Code
+            <ZipCodeVis />
         </Tab>
         <Tab eventKey='complaint-totals' title='NYC'>
           NYC

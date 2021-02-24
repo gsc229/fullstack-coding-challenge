@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react'
-import { complaintTypePieConverter, defs, fill, pieConverter } from './helpers/pieConverters'
+import { defs, fill, pieConverter } from './helpers/pieConverters'
 import { TotalsContext } from '../../Pages/TotalsContext'
 import PieChart from './PieChart'
 import Row from 'react-bootstrap/Row'
@@ -9,7 +9,7 @@ const NewYorkCity = () => {
 
   const { totals } = useContext(TotalsContext)
   console.log({totals})
-  const cityPieData = useMemo(() => complaintTypePieConverter(totals.typeTotals.data || []) , [totals])
+  const cityPieData = useMemo(() => pieConverter(totals.typeTotals.data || [], 'complaint_type', 'count') , [totals])
   const boroughData = useMemo(() => pieConverter(totals.boroughTotals.data || [], 'borough', 'count') , [totals])
 
   return (

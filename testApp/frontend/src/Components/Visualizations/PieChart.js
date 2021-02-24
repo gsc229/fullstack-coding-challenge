@@ -1,15 +1,9 @@
-import React, { useContext, useMemo } from 'react'
+import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
-import { DashBoardContext } from '../../Pages/DashBoardContext'
-import { pieConverter, defs, fill } from './helpers/pieConverter'
 import { useWindowSize } from '../../custom_hooks/useWindowSize'
 
 
-const PieChart = () => {
-
-  const { complaintTallies } = useContext(DashBoardContext)
-
-  const data = useMemo(() =>  pieConverter(complaintTallies), [])
+const PieChart = ({data, defs, fill}) => {
 
   const { width } = useWindowSize()
 

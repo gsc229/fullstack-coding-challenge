@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { DashBoardContext } from '../../Pages/DashBoardContext'
+import { pieConverter, defs, fill } from '../Dashboard/helpers/pieConverter'
 import { UserContext } from '../../Auth/UserContext'
-import PicChart from './PieChart'
+import PicChart from '../Visualizations/PieChart'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -9,6 +10,8 @@ const DashboardHeader = () => {
 
   const { constituentCases, complaints, openCases, closedCases, complaintTallies } = useContext(DashBoardContext)
   const { auth } = useContext(UserContext)
+
+  const data = useMemo(() =>  pieConverter(complaintTallies), [])
 
   const topThree = complaintTallies.slice(0, 3)
 
@@ -38,7 +41,7 @@ const DashboardHeader = () => {
         </Col>
         <Col  className='pie-column' md='12' lg='8'>
           <div className='pie-chart-parent'>
-            <PicChart />
+            <PicChart data={data} defs={defs} fill={fill} />
           </div>
         </Col>
 

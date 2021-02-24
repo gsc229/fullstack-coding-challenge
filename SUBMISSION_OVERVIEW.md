@@ -76,7 +76,7 @@
 <td>Returns <strong>top 3 complaint types</strong></td>
 </tr>
 </tbody>
-</table><p><strong>Added*</strong></p>
+</table><p><strong>Added</strong></p>
 
 <table>
 <thead>

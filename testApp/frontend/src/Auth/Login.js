@@ -19,8 +19,6 @@ const Login = () => {
 
   })
 
-  const [loginErrorMessage, setLoginErroMessage] = useState('')
-
   const handleChange = (e) => {
     setCredentials({
       ...credentials,

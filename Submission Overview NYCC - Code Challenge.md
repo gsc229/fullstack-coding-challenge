@@ -32,7 +32,8 @@
 </ul>
 <h2 id="api-endpoints">API endpoints</h2>
 <p><strong>Base Url</strong><br>
-<code>localhost:8000</code></p>
+<code>localhost:8000</code><br>
+<a href="https://documenter.getpostman.com/view/6222631/TWDZJc9J#intro"><strong>Postman Documentation</strong></a></p>
 <p><strong>Original</strong></p>
 
 <table>
@@ -131,5 +132,5 @@ Although the complaint data sets are not too large, the search bar above the com
 &nbsp;&nbsp;&nbsp;&nbsp;App.js<br>
 &nbsp;&nbsp;&nbsp;&nbsp;App.scss</p>
 <p>*<strong>Note</strong> All page components are wrapped in a Layout component<br>
-**<strong>Note</strong> Eevery Directory typically has at least one scss files which is imported into App.scss</p>
+**<strong>Note</strong> Eevery directory typically has at least one scss file which is imported into App.scss</p>
 

@@ -90,7 +90,7 @@
 <tr>
 <td><code>/api/userPofile/user/</code></td>
 <td>GET</td>
-<td>Returns <strong>all user profiles</strong></td>
+<td>Returns <strong>all user profiles*</strong></td>
 </tr>
 <tr>
 <td><code>/api/userPofile/user/:id</code></td>
@@ -101,6 +101,41 @@
 <td><code>/api/userPofile/user/get-profile/</code></td>
 <td>GET</td>
 <td>Returns <strong>user’s profile based on token in the Authorization header</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/allCases/type-totals</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of complaint totals by complaint type</strong></td>
+</tr>
+<tr>
+<td><code>api/complaints/allCases/zip-totals</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of total complaints in each zip code</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/allCases/borough-totals</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of total complaints in each borough</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/allCases/zip-and-type</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of the complaint types and totals for every zip code</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/allCases/zip-and-type?zipcode=11208</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of complaint types and totals for a single zip code</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/allCases/borough-and-type</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of the complaint types and totals for every borough</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/allCases/borough-and-type?borough=Manhattan</code></td>
+<td>GET</td>
+<td>Returns <strong>breakdown of complaint types and totals for a single borough</strong></td>
 </tr>
 </tbody>
 </table><p>* <strong>Note</strong>: I didn’t actually crate a ‘user profile app’. I only added the userProfile prefix to be semantic. You can get the the user endpoints the same as the  complaints. i.e. <code>/api/complaints/user/get-profile</code> etc.</p>

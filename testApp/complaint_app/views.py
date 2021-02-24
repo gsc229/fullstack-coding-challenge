@@ -55,7 +55,7 @@ class AllCasesViewSet(viewsets.ModelViewSet):
       return Response({ 'success': True, 'data': { f'{zipcode}': { annotatedZipTypes }} })
     
     #all
-    annotatedSet = self.queryset.values('zip').order_by('zip').annotate(count=Count('zip')).order_by('-count')
+    annotatedSet = self.queryset.filter(zip__isnull=False).values('zip').order_by('zip').annotate(count=Count('zip')).order_by('-count')
     zipsTypes = []
     for zipCode in annotatedSet:
       zipQueryset = self.queryset.filter(zip=zipCode['zip'])

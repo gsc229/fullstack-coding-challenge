@@ -22,14 +22,14 @@ function App() {
   useEffect(() => {
 
     const getProfile = async() => {
-      const profile = await getUserProfile(true)
+      const profile = await getUserProfile()
       setAuth({
         ...auth,
         profile
       })
     }
 
-    getProfile()
+    auth.isAuthenticated && getProfile()
 
   }, [auth.isAuthenticated])
 

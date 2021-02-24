@@ -13,7 +13,7 @@ const Menu = () => {
   const { auth, setAuth } = useContext(UserContext)
 
   const location = useLocation()
-  console.log({location})
+  
   const handleLogOut = () => {
     localStorage.removeItem('token')
     setAuth({
@@ -45,13 +45,13 @@ const Menu = () => {
           to='/'
           active={location.pathname === '/'}
           as={Link}>
-            District Numbers
+            District Data
           </Nav.Link>
           <Nav.Link
           active={location.pathname === '/statistics'}
           to='/statistics'
           as={Link}>
-            City Numbers
+            City Totals
           </Nav.Link>
         </Nav>
         

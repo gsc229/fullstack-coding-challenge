@@ -3,6 +3,7 @@ import { TotalsContext } from '../../Pages/TotalsContext'
 import PreContainerVisData  from '../../DevComponents/PreContainerVisData'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+import NewYorkCity from './NewYorkCity'
 
 const Visualizations = () => {
 
@@ -13,7 +14,7 @@ const Visualizations = () => {
 
   return (
     <div className='visualizations-container'>
-      <Tabs defaultActiveKey='borough-totals'  id='visualizations-tabs'>
+      <Tabs defaultActiveKey='complaint-totals'  id='visualizations-tabs'>
         <Tab eventKey='borough-totals' title='Borough' >
             Borough Totals
         </Tab>
@@ -22,9 +23,10 @@ const Visualizations = () => {
         </Tab>
         <Tab eventKey='complaint-totals' title='NYC'>
           NYC
+          <NewYorkCity />
         </Tab>
       </Tabs>
-      <PreContainerVisData  dataObj={totals}  />
+      {/* <PreContainerVisData  dataObj={totals}  /> */}
     </div>
   )
 }

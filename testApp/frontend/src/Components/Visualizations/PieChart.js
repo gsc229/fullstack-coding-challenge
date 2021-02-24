@@ -3,7 +3,7 @@ import { ResponsivePie } from '@nivo/pie'
 import { useWindowSize } from '../../custom_hooks/useWindowSize'
 
 
-const PieChart = ({data, defs, fill}) => {
+const PieChart = ({data, defs, fill, showLegend=true}) => {
 
   const { width } = useWindowSize()
 
@@ -47,6 +47,30 @@ const PieChart = ({data, defs, fill}) => {
   }
 
 
+  const legends = [
+    {   
+        ...getStyles().legend,
+        anchor: 'bottom-left',
+        direction: 'row',
+        justify: false,
+        itemTextColor: '#999',
+        itemDirection: 'top-to-bottom',
+        itemOpacity: 1,
+        symbolSize: 19,
+        symbolShape: 'circle',
+        effects: [
+            {
+                on: 'hover',
+                style: {
+                    itemTextColor: '#000'
+                }
+            }
+        ]
+    }
+]
+
+
+
   return (
     <ResponsivePie
         data={data}
@@ -64,27 +88,7 @@ const PieChart = ({data, defs, fill}) => {
         sliceLabelsTextColor="#333333"
         defs={defs}
         fill={fill}
-        legends={[
-          {   
-              ...getStyles().legend,
-              anchor: 'bottom-left',
-              direction: 'row',
-              justify: false,
-              itemTextColor: '#999',
-              itemDirection: 'top-to-bottom',
-              itemOpacity: 1,
-              symbolSize: 19,
-              symbolShape: 'circle',
-              effects: [
-                  {
-                      on: 'hover',
-                      style: {
-                          itemTextColor: '#000'
-                      }
-                  }
-              ]
-          }
-      ]}
+        legends={ showLegend && legends }
     />
   )
 }

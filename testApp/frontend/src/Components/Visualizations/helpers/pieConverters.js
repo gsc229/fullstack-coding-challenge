@@ -48,8 +48,9 @@ export const fill=[]
 
 
 export const complaintTypePieConverter = (complaintTallies) => {
+  console.log({complaintTallies})
   const pieData = complaintTallies.map(datum => {
-
+    console.log({datum})
     const randomFill = Math.ceil(Math.random() * defs.length )
 
     if(defs[randomFill]){

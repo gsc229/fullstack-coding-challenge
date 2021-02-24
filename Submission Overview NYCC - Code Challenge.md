@@ -33,18 +33,76 @@
 <h2 id="api-endpoints">API endpoints</h2>
 <p><strong>Base Url</strong><br>
 <code>localhost:8000</code></p>
-<p><strong>Original</strong><br>
-| <code>/admin/</code> | GET | Log in for superusers into the Django admin portal |<br>
-| <code>/login/</code> | POST | Accepts username and password and returns a <strong>token</strong>. Use this <strong>token</strong> to authorize use of other endpoints. View the <a href="https://www.django-rest-framework.org/api-guide/authentication/#basicauthentication">documentation</a> |<br>
-| <code>/api/complaints/</code> | GET | Returns <strong>all complaints</strong> |<br>
-| <code>/api/complaints/openCases/</code> | GET | Returns <strong>all open complaints</strong> |<br>
-| <code>/api/complaints/closedCases/</code> | GET | Returns <strong>all closed complaints</strong> |<br>
-| <code>/api/complaints/topComplaints/</code> | GET | Returns <strong>top 3 complaint types</strong> |<br>
-<strong>Added*</strong><br>
-| <code>/api/userPofile/user/</code> | GET | Returns <strong>all user profiles</strong> |<br>
-| <code>/api/userPofile/user/:id</code> | GET | Returns <strong>a single user profile</strong> |<br>
-| <code>/api/userPofile/user/get-profile/</code> | GET | Returns <strong>user’s profile based on token in the Authorization header</strong></p>
-<p>* <strong>Note</strong>: I didn’t actually crate a ‘user profile app’. I only added the userProfile prefix to be semantic. You can get the the user endpoints the same as the  complaints. i.e. <code>/api/complaints/user/get-profile</code> etc.</p>
+<p><strong>Original</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/admin/</code></td>
+<td>GET</td>
+<td>Log in for superusers into the Django admin portal</td>
+</tr>
+<tr>
+<td><code>/login/</code></td>
+<td>POST</td>
+<td>Accepts username and password and returns a <strong>token</strong>. Use this <strong>token</strong> to authorize use of other endpoints. View the <a href="https://www.django-rest-framework.org/api-guide/authentication/#basicauthentication">documentation</a></td>
+</tr>
+<tr>
+<td><code>/api/complaints/</code></td>
+<td>GET</td>
+<td>Returns <strong>all complaints</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/openCases/</code></td>
+<td>GET</td>
+<td>Returns <strong>all open complaints</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/closedCases/</code></td>
+<td>GET</td>
+<td>Returns <strong>all closed complaints</strong></td>
+</tr>
+<tr>
+<td><code>/api/complaints/topComplaints/</code></td>
+<td>GET</td>
+<td>Returns <strong>top 3 complaint types</strong></td>
+</tr>
+</tbody>
+</table><p><strong>Added*</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/userPofile/user/</code></td>
+<td>GET</td>
+<td>Returns <strong>all user profiles</strong></td>
+</tr>
+<tr>
+<td><code>/api/userPofile/user/:id</code></td>
+<td>GET</td>
+<td>Returns <strong>a single user profile</strong></td>
+</tr>
+<tr>
+<td><code>/api/userPofile/user/get-profile/</code></td>
+<td>GET</td>
+<td>Returns <strong>user’s profile based on token in the Authorization header</strong></td>
+</tr>
+</tbody>
+</table><p>* <strong>Note</strong>: I didn’t actually crate a ‘user profile app’. I only added the userProfile prefix to be semantic. You can get the the user endpoints the same as the  complaints. i.e. <code>/api/complaints/user/get-profile</code> etc.</p>
 <h2 id="frontend-state-management">Frontend State Management</h2>
 <p><strong>useContext</strong></p>
 <ul>

@@ -1,19 +1,13 @@
-import React, { useContext, useMemo } from 'react'
+import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
-import { DashBoardContext } from '../../Pages/DashBoardContext'
-import { pieConverter, defs, fill } from './helpers/pieConverter'
 import { useWindowSize } from '../../custom_hooks/useWindowSize'
 
 
-const PieChart = () => {
-
-  const { complaintTallies } = useContext(DashBoardContext)
-
-  const data = useMemo(() =>  pieConverter(complaintTallies), [])
+const PieChart = ({data, defs, fill, showLegend=true, styles={}}) => {
 
   const { width } = useWindowSize()
 
-  const getStyles = () => {
+  const getScreenAdjustedStyles = () => {
 
     if(width > 991){
       return{
@@ -53,10 +47,34 @@ const PieChart = () => {
   }
 
 
+  const legends = [
+    {   
+        ...getScreenAdjustedStyles().legend,
+        anchor: 'bottom-left',
+        direction: 'row',
+        justify: false,
+        itemTextColor: '#999',
+        itemDirection: 'top-to-bottom',
+        itemOpacity: 1,
+        symbolSize: 19,
+        symbolShape: 'circle',
+        effects: [
+            {
+                on: 'hover',
+                style: {
+                    itemTextColor: '#000'
+                }
+            }
+        ]
+    }
+]
+
+
+
   return (
     <ResponsivePie
         data={data}
-        margin={getStyles().margin}
+        margin={{...getScreenAdjustedStyles().margin, ...styles}}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}
@@ -70,27 +88,7 @@ const PieChart = () => {
         sliceLabelsTextColor="#333333"
         defs={defs}
         fill={fill}
-        legends={[
-          {   
-              ...getStyles().legend,
-              anchor: 'bottom-left',
-              direction: 'row',
-              justify: false,
-              itemTextColor: '#999',
-              itemDirection: 'top-to-bottom',
-              itemOpacity: 1,
-              symbolSize: 19,
-              symbolShape: 'circle',
-              effects: [
-                  {
-                      on: 'hover',
-                      style: {
-                          itemTextColor: '#000'
-                      }
-                  }
-              ]
-          }
-      ]}
+        legends={ showLegend && legends }
     />
   )
 }

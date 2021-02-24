@@ -1,0 +1,2 @@
+export const typeLabels = ["Aging","Civil Service and Labor","Consumer Affairs","Cultural Affairs","Economy/Jobs","Education","Environment","Finance","General Welfare","Governmental Operations","Health","Housing and Buildings","Human and Civil Rights","Immigration","Land Use and Zoning","Legal Services","Parks","Public Safety","Quality of Life","Recovery and Resiliency","Sanitation","Select One","Transportation","Utilities","Veterans Affairs","Youth Services"]
+

@@ -1,8 +1,8 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../Auth/UserContext'
 import { Nav } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
-import {Link} from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import nycclogo from '../images/nyc-seal-blue.png'
 import { ProfileIcon, LogOutIcon } from '../Components/Icons/Icons'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
@@ -12,6 +12,8 @@ const Menu = () => {
 
   const { auth, setAuth } = useContext(UserContext)
 
+  const location = useLocation()
+  
   const handleLogOut = () => {
     localStorage.removeItem('token')
     setAuth({
@@ -21,8 +23,10 @@ const Menu = () => {
     })
   }
 
+
+
   return (
-    <Navbar 
+    <Navbar
     className='layout-navbar'
     fixed='top' bg='light' expand='lg' >
       <Navbar.Brand>
@@ -39,8 +43,15 @@ const Menu = () => {
         <Nav className='mr-auto'>
           <Nav.Link
           to='/'
+          active={location.pathname === '/'}
           as={Link}>
-            Dashboard
+            District Data
+          </Nav.Link>
+          <Nav.Link
+          active={location.pathname === '/statistics'}
+          to='/statistics'
+          as={Link}>
+            City Totals
           </Nav.Link>
         </Nav>
         

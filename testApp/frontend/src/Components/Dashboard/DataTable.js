@@ -12,7 +12,6 @@ const DataTable = ({complaintsData}) => {
 
   const { 
     getTableProps,
-    getTableBodyProps,
     headerGroups,
     footerGroups,
     rows, 

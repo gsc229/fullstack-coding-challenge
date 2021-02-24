@@ -12,7 +12,7 @@ const LoginPage = () => {
     <LayoutLoggedOut >
       <div className="login-page">
         {!auth.isLoading && <Login />}
-        {auth.isLoading && <LightSpinner text='Logging in...' />}
+        {auth.isLoading && !auth.errorMessage && <LightSpinner text='Logging in...' />}
       </div>
     </LayoutLoggedOut>
   )

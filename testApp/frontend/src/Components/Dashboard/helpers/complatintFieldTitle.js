@@ -18,4 +18,3 @@ export const csvHeaders = Object
 .map(entry => ({label: entry[1].title, key: entry[0] }))
 
 
-console.log({csvHeaders})

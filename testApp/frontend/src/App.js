@@ -5,6 +5,7 @@ import { getUserProfile } from './Api/getUserData'
 import PrivateRoute from './Auth/PrivateRoute'
 import LoginPage from './Auth/LoginPage'
 import DashboardPage from './Pages/DashboardPage'
+import VisualizationsPage from './Pages/VisualizationsPage'
 import UserProfilePage from './Pages/UserProfilePage'
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -38,6 +39,7 @@ function App() {
         <UserContext.Provider value={{auth, setAuth}} >
           <Route path='/login' component={LoginPage}/>
           <PrivateRoute exact path='/' auth={auth} component={DashboardPage} />
+          <PrivateRoute path='/statistics' auth={auth} component={VisualizationsPage} />
           <PrivateRoute path='/user-profile' auth={auth} component={UserProfilePage} />
         </UserContext.Provider>
       </Switch>

@@ -1,8 +1,8 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../Auth/UserContext'
 import { Nav } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import nycclogo from '../images/nyc-seal-blue.png'
 import { ProfileIcon, LogOutIcon } from '../Components/Icons/Icons'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
@@ -41,6 +41,11 @@ const Menu = () => {
           to='/'
           as={Link}>
             Dashboard
+          </Nav.Link>
+          <Nav.Link
+          to='/statistics'
+          as={Link}>
+            More Stats
           </Nav.Link>
         </Nav>
         

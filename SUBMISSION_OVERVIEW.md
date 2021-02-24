@@ -7,7 +7,7 @@
 <h2 id="dev-technologies">Dev Technologies</h2>
 <ul>
 <li><a href="https://trello.com/invite/b/kopcvyMk/9616e91ac8690334b97cdd2284152f06/nycc-code-challenge">Trello Board</a></li>
-<li><a href="https://documenter.getpostman.com/view/6222631/TWDZJc9J#intro">Postman</a></li>
+<li><a href="https://documenter.getpostman.com/view/6222631/TWDZJc9J#intro">Postman (click for documentation)</a></li>
 <li><a href="https://pipenv.pypa.io/en/latest/">Pipenv</a></li>
 <li><a href="https://classic.yarnpkg.com/en/">Yarn</a></li>
 <li><a href="https://github.com/">GitHub</a></li>

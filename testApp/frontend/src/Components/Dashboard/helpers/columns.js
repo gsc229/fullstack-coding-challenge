@@ -23,5 +23,3 @@ export const COLUMNS = Object.entries(complaintFieldTitle)
     }
   }
 })
-
-console.log({COLUMNS})

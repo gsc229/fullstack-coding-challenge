@@ -15,6 +15,19 @@ def getDistrictString(user):
   return f"NYCC0{dist_num}" if len(dist_num) == 1 else f"NYCC{dist_num}"
 
 
+class AllCasesViewSet(viewsets.ModelViewSet):
+  http_method_names = ['get']
+  serializer_class = ComplaintSerializer
+  queryset = Complaint.objects.all()
+
+  @action(methods=['get'], detail=False,  url_path='type-tallies')
+  def getTypeTallies(self, request):
+    queryset = self.queryset
+    annotatedSet = self.queryset.filter(complaint_type__isnull=False).values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count')
+    serializer = ComplaintSerializer(queryset, many=True)
+    return Response({ 'success': True, 'total_cases': len(serializer.data), 'num_types': len(annotatedSet), 'data': annotatedSet })
+
+
 class ComplaintViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
   serializer_class = ComplaintSerializer

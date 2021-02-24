@@ -3,11 +3,11 @@ import { ResponsivePie } from '@nivo/pie'
 import { useWindowSize } from '../../custom_hooks/useWindowSize'
 
 
-const PieChart = ({data, defs, fill, showLegend=true}) => {
+const PieChart = ({data, defs, fill, showLegend=true, styles={}}) => {
 
   const { width } = useWindowSize()
 
-  const getStyles = () => {
+  const getScreenAdjustedStyles = () => {
 
     if(width > 991){
       return{
@@ -49,7 +49,7 @@ const PieChart = ({data, defs, fill, showLegend=true}) => {
 
   const legends = [
     {   
-        ...getStyles().legend,
+        ...getScreenAdjustedStyles().legend,
         anchor: 'bottom-left',
         direction: 'row',
         justify: false,
@@ -74,7 +74,7 @@ const PieChart = ({data, defs, fill, showLegend=true}) => {
   return (
     <ResponsivePie
         data={data}
-        margin={getStyles().margin}
+        margin={{...getScreenAdjustedStyles().margin, ...styles}}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}

@@ -48,9 +48,7 @@ export const fill=[]
 
 
 export const complaintTypePieConverter = (complaintTallies) => {
-  console.log({complaintTallies})
   const pieData = complaintTallies.map(datum => {
-    console.log({datum})
     const randomFill = Math.ceil(Math.random() * defs.length )
 
     if(defs[randomFill]){
@@ -63,6 +61,26 @@ export const complaintTypePieConverter = (complaintTallies) => {
     }
 
     return { id: datum.complaint_type, label: datum.complaint_type, value: datum.count }
+  })
+
+  return pieData
+}
+
+export const pieConverter = (data, labelField, numberField) => {
+
+  const pieData = data.map(datum => {
+    const randomFill = Math.ceil(Math.random() * defs.length )
+
+    if(defs[randomFill]){
+      fill.push({
+        match: {
+            id: datum[labelField]
+        },
+        id: defs[randomFill].id
+    })
+    }
+
+    return { id: datum[labelField], label: datum[labelField], value: datum[numberField] }
   })
 
   return pieData

@@ -23,7 +23,7 @@ const DashboardPage = () => {
   useEffect(() => {
 
     const getNewData = async() => {
-      const newData = await  getAllComplaintData()
+      const newData = await  getAllComplaintData(true)
       if(newData){
           setData({
             ...newData,

@@ -9,8 +9,8 @@ const Visualizations = () => {
 
 
   const { totals } = useContext(TotalsContext)
-
-
+ 
+  
 
   return (
     <div className='visualizations-container'>
@@ -26,7 +26,7 @@ const Visualizations = () => {
           <NewYorkCity />
         </Tab>
       </Tabs>
-      {/* <PreContainerVisData  dataObj={totals}  /> */}
+      <PreContainerVisData  dataObj={totals}  />
     </div>
   )
 }

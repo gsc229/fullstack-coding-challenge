@@ -41,7 +41,7 @@ const VisualizationsPage = () => {
   return (
     <LayoutLoggedIn>
       <div className='page visualizations-page'>
-        <h2>Complaint Cases Statistics</h2>
+        <h2>Complaint Case Statistics</h2>
         <TotalsContext.Provider value={ { totals, setTotals } }>
           <Visualizations />
         </TotalsContext.Provider>

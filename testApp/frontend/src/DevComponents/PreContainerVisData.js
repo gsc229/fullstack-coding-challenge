@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-import { VisualizationContext } from '../Pages/VisualizationContext'
+import { TotalsContext } from '../Pages/TotalsContext'
 
 const PreContainerVisData= ({
   dataObj,
   many=true
 }) => {
 
-  const { stats } = useContext(VisualizationContext)
+  const { totals } = useContext(TotalsContext)
 
-  if(!dataObj) dataObj = stats
+  if(!dataObj) dataObj = totals
 
   return (
     <div className='pre-container'>

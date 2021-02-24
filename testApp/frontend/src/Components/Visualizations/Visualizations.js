@@ -1,18 +1,30 @@
 import React, { useContext } from 'react'
-import { VisualizationContext } from '../../Pages/VisualizationContext'
+import { TotalsContext } from '../../Pages/TotalsContext'
 import PreContainerVisData  from '../../DevComponents/PreContainerVisData'
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
 
 const Visualizations = () => {
 
 
-  const { stats } = useContext(VisualizationContext)
+  const { totals } = useContext(TotalsContext)
 
 
 
   return (
-    <div>
-      <h5>Visualizations</h5>
-      <PreContainerVisData  dataObj={stats}  />
+    <div className='visualizations-container'>
+      <Tabs defaultActiveKey='borough-totals'  id='visualizations-tabs'>
+        <Tab eventKey='borough-totals' title='Borough' >
+            Borough Totals
+        </Tab>
+        <Tab eventKey='zip-code-totals' title='Zip Code' >
+            Zip Code
+        </Tab>
+        <Tab eventKey='complaint-totals' title='NYC'>
+          NYC
+        </Tab>
+      </Tabs>
+      <PreContainerVisData  dataObj={totals}  />
     </div>
   )
 }

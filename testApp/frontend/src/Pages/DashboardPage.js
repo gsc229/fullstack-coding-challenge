@@ -45,7 +45,7 @@ const DashboardPage = () => {
 
   return (
     <LayoutLoggedIn>
-      <div className='dashboard-page-container'>
+      <div className='dashboard-page-container page'>
         <DashBoardContext.Provider value={data}>
          {!data.isLoading && <Dashboard />}
          {data.isLoading && <LightSpinner text='Loading Dashboard...' />}

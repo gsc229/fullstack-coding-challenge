@@ -45,7 +45,7 @@ const Menu = () => {
           <Nav.Link
           to='/statistics'
           as={Link}>
-            More Stats
+            More totals
           </Nav.Link>
         </Nav>
         

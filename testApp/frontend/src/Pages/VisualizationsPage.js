@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { VisualizationContext } from './VisualizationContext'
+import { TotalsContext } from './TotalsContext'
 import { getTypeTotals, getTypeZipAndBoroughTotals } from '../Api/getVisualizationData'
 import LayoutLoggedIn from '../Layouts/LayoutLoggedIn'
 import Visualizations from '../Components/Visualizations/Visualizations'
@@ -7,7 +7,7 @@ import Visualizations from '../Components/Visualizations/Visualizations'
 const VisualizationsPage = () => {
 
 
-  const [ stats, setStats ] = useState({
+  const [ totals, setTotals ] = useState({
     total_cases: null,
     typeTotals: [],
     zipTotals: [],
@@ -24,8 +24,8 @@ const VisualizationsPage = () => {
       const newData = await getTypeZipAndBoroughTotals()
 
       if(newData){
-        setStats({
-          ...stats,
+        setTotals({
+          ...totals,
           ...newData
         })
       }
@@ -40,11 +40,11 @@ const VisualizationsPage = () => {
 
   return (
     <LayoutLoggedIn>
-      <div className='visualizations-page'>
-        <h1>VisualizationsPage</h1>
-        <VisualizationContext.Provider value={ { stats, setStats } }>
+      <div className='page visualizations-page'>
+        <h2>Complaint Cases Statistics</h2>
+        <TotalsContext.Provider value={ { totals, setTotals } }>
           <Visualizations />
-        </VisualizationContext.Provider>
+        </TotalsContext.Provider>
       </div>
     </LayoutLoggedIn>
   )

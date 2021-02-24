@@ -20,6 +20,10 @@ pre{
   margin: auto
 }
 
+.page{
+  margin-top: 20px;
+}
+
 // Layouts
 @import './Layouts/layouts.scss';
 
@@ -31,3 +35,6 @@ pre{
 
 // User Profile
 @import './Components/UserProfile/user_profile.scss';
+
+// Visualizations
+@import './Components/Visualizations/visualizations.scss';

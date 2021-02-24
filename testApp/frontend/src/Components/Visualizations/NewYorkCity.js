@@ -8,13 +8,12 @@ import Col from 'react-bootstrap/Col'
 const NewYorkCity = () => {
 
   const { totals } = useContext(TotalsContext)
-  console.log({totals})
+  
   const cityPieData = useMemo(() => pieConverter(totals.typeTotals.data || [], 'complaint_type', 'count') , [totals])
   const boroughData = useMemo(() => pieConverter(totals.boroughTotals.data || [], 'borough', 'count') , [totals])
 
   return (
     <div className='nyc-pie-container' >
-      
       <Row>
         <Col lg='6' >
           <div className='nyc-pie-container'>
@@ -27,7 +26,6 @@ const NewYorkCity = () => {
             <PieChart data={boroughData} defs={defs} fill={fill}  />
           </div>
         </Col>
-
       </Row>
     </div>
   )

@@ -8,7 +8,6 @@ const VisualizationsPage = () => {
 
 
   const [ totals, setTotals ] = useState({
-    total_cases: null,
     typeTotals: [],
     zipTotals: [],
     boroughTotals: [],
@@ -29,7 +28,6 @@ const VisualizationsPage = () => {
           ...newData
         })
       }
-
     }
 
     getNewTypeData()

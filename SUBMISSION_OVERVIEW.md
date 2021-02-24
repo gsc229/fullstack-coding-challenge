@@ -3,7 +3,7 @@
 
 ---
 
-<h1 id="submission_info">Submission_Info:</h1>
+<h1 id="submission-overview">Submission Overview:</h1>
 <h2 id="dev-technologies">Dev Technologies</h2>
 <ul>
 <li><a href="https://trello.com/invite/b/kopcvyMk/9616e91ac8690334b97cdd2284152f06/nycc-code-challenge">Trello Board</a></li>

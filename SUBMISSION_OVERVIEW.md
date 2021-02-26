@@ -138,7 +138,7 @@
 <td>Returns <strong>breakdown of complaint types and totals for a single borough</strong></td>
 </tr>
 </tbody>
-</table><p>* <strong>Note</strong>: I didn’t actually crate a ‘user profile app’. I only added the userProfile prefix to be semantic. You can get the the user endpoints the same as the  complaints. i.e. <code>/api/complaints/user/get-profile</code> etc.</p>
+</table><p>* <strong>Note</strong>: I didn’t actually create a ‘user profile app’. I only added the userProfile prefix to be semantic. You can get the the user endpoints the same as the  complaints. i.e. <code>/api/complaints/user/get-profile</code> etc.</p>
 <h2 id="frontend-state-management">Frontend State Management</h2>
 <p><strong>useContext</strong></p>
 <ul>

@@ -1111,6 +1111,17 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nivo/axes@0.67.0":
+  version "0.67.0"
+  resolved "https://registry.yarnpkg.com/@nivo/axes/-/axes-0.67.0.tgz#5892a8c90f782e478015865f779b62f2e74b7665"
+  integrity sha512-csqEgFoJQGoB5/TDSy7SXCy/2QSdrfSa51AMU/RhzpnZ35wNO/zHkEfP+ApvB8nuuwVuBNOShio80PNZOOD+Og==
+  dependencies:
+    "@nivo/scales" "0.67.0"
+    d3-format "^1.4.4"
+    d3-time "^1.0.11"
+    d3-time-format "^2.1.3"
+    react-spring "9.0.0-rc.3"
+
 "@nivo/colors@0.67.0":
   version "0.67.0"
   resolved "https://registry.yarnpkg.com/@nivo/colors/-/colors-0.67.0.tgz#5a2adc4b55406466efb8bbafecc08249e4e94e69"
@@ -1140,6 +1151,17 @@
     recompose "^0.30.0"
     resize-observer-polyfill "^1.5.1"
 
+"@nivo/heatmap@^0.67.0":
+  version "0.67.0"
+  resolved "https://registry.yarnpkg.com/@nivo/heatmap/-/heatmap-0.67.0.tgz#49eccc50771b9c56aa4e6820ab7775cad4793daa"
+  integrity sha512-dKZmbNuN79/kspjFW3Z3reW7IhVXtcC79LxD8LB5+lZm8ql5dVVzp9ZsIsw/+ZTk1Y6fpDaPhW71waGQM7Fvpg==
+  dependencies:
+    "@nivo/axes" "0.67.0"
+    "@nivo/colors" "0.67.0"
+    "@nivo/tooltip" "0.67.0"
+    d3-scale "^3.0.0"
+    react-spring "9.0.0-rc.3"
+
 "@nivo/legends@0.67.0":
   version "0.67.0"
   resolved "https://registry.yarnpkg.com/@nivo/legends/-/legends-0.67.0.tgz#9cbe99d8929c6addafd8253f65b7e040d9d4bb6c"
@@ -1157,6 +1179,15 @@
     "@nivo/legends" "0.67.0"
     "@nivo/tooltip" "0.67.0"
     d3-shape "^1.3.5"
+    lodash "^4.17.11"
+
+"@nivo/scales@0.67.0":
+  version "0.67.0"
+  resolved "https://registry.yarnpkg.com/@nivo/scales/-/scales-0.67.0.tgz#8e79e990ebd555bdce7c3dcdd73b8ad46cb0a74a"
+  integrity sha512-hXDeh3GzjZA3CcvJp14vCp0/QeoYMxVC2dZl55rIJdW200M+ET/ZtJQA2W1mDOGQUxR9z1flFvGJA+EqXhThwQ==
+  dependencies:
+    d3-scale "^3.0.0"
+    d3-time-format "^2.1.3"
     lodash "^4.17.11"
 
 "@nivo/tooltip@0.67.0":
@@ -3385,7 +3416,7 @@ d3-time-format@^2.1.3:
   dependencies:
     d3-time "1"
 
-d3-time@1:
+d3-time@1, d3-time@^1.0.11:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.1.0.tgz#b1e19d307dae9c900b7e5b25ffc5dcc249a8a0f1"
   integrity sha512-Xh0isrZ5rPYYdqhAVk8VLnMEidhz5aP7htAADH6MfzgmmicPkTo8LhkLxci61/lCB7n7UmE3bN0leRt+qvkLxA==

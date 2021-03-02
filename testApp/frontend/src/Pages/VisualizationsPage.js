@@ -53,7 +53,7 @@ const VisualizationsPage = () => {
           {totals.isLoading && <LightSpinner text='Loading...' /> }
           {totals.errorMessage && <Alert variant='danger'>{totals.errorMessage}</Alert>}
           
-          <PreContainerVisData />
+          {/* <PreContainerVisData /> */}
         </TotalsContext.Provider>
       </div>
     </LayoutLoggedIn>

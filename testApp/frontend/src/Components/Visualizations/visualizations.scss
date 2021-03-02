@@ -19,8 +19,9 @@
 
   .heat-map-container{
     height: 2500px;
-    width: 2000px;
-    background-color: lightblue;
+    max-width: 1000px;
+    margin: 40px auto;
+  
   }
 
 

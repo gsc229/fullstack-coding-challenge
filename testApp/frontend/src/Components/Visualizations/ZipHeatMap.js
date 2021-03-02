@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { getAllZipsAndTypes } from '../../Api/getVisualizationData'
 import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
 import PreContainerVisData  from '../../DevComponents/PreContainerVisData'
@@ -8,9 +8,10 @@ import { typeLabels, typeLabelsColors, labelColorKey } from './helpers/allTypes'
 const ZipHeatMap = () => {
 
   const [ heatMapData, setHeatMapData ] = useState([])
+  
 
   useEffect(() => {
-
+    
     const getAndConvertData = async () => {
       
       const zipAndTypesData = await getAllZipsAndTypes(true)
@@ -28,15 +29,17 @@ const ZipHeatMap = () => {
 
   return (
     <div className='heat-map-container'>
+      
       <ResponsiveHeatMapCanvas
         data={heatMapData}
         keys={typeLabels}
         indexBy="zipcode"
         margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
         forceSquare={false}
+        colors='BuPu'
         axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: 36 }}
         axisRight={null}
-        axisBottom={null}
+        axisBottom={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: 36 }}
         axisLeft={{
             orient: 'left',
             tickSize: 5,
@@ -65,10 +68,10 @@ const ZipHeatMap = () => {
         motionConfig="wobbly"
         motionStiffness={80}
         motionDamping={9}
-        hoverTarget="cell"
-        cellHoverOthersOpacity={0.25}
+        hoverTarget="rowColumn"
+        cellHoverOthersOpacity={0.3}
       />
-      <PreContainerVisData dataObj={{typeLength: typeLabels.length, typeLabels, labelColorKey, heatMapData}} />
+      {/* <PreContainerVisData dataObj={{typeLength: typeLabels.length, typeLabels, labelColorKey, heatMapData}} /> */}
     </div>
   )
 }

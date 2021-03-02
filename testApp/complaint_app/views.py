@@ -157,8 +157,6 @@ class ConsituentCasesViewSet(viewsets.ModelViewSet):
     queryset = self.queryset.filter(council_dist=user_dist)
     serializer = ComplaintSerializer(queryset, many=True)
     return Response({'success': True, 'data': serializer.data})
-  
-
 
 class UserProfileViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']

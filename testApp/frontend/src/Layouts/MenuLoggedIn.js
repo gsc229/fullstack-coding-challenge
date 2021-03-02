@@ -1,16 +1,19 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../Auth/UserContext'
 import { Nav } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
-import {Link} from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import nycclogo from '../images/nyc-seal-blue.png'
+import { ProfileIcon, LogOutIcon } from '../Components/Icons/Icons'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import ToolTip from 'react-bootstrap/Tooltip'
 
 const Menu = () => {
 
-  
-
   const { auth, setAuth } = useContext(UserContext)
 
+  const location = useLocation()
+  
   const handleLogOut = () => {
     localStorage.removeItem('token')
     setAuth({
@@ -23,29 +26,53 @@ const Menu = () => {
 
 
   return (
-    <Navbar 
+    <Navbar
     className='layout-navbar'
     fixed='top' bg='light' expand='lg' >
       <Navbar.Brand>
         <img  
         className='navbar-nycc-brand'
         src={nycclogo} alt=""/>
-        <h4>New York City Council</h4>
+        <div className='brand-text'>
+          <h4>New York City Council</h4>
+          <p>{auth.profile.first_name} {auth.profile.last_name}, District: {auth.profile.district}</p>
+        </div>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse>
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to='/dashboard'>
-            Open Complaints
+        <Nav className='mr-auto'>
+          <Nav.Link
+          to='/'
+          active={location.pathname === '/'}
+          as={Link}>
+            District Data
           </Nav.Link>
-          <Nav.Link as={Link} to='/dashboard'>
-            Closed Complaints
+          <Nav.Link
+          active={location.pathname === '/statistics'}
+          to='/statistics'
+          as={Link}>
+            City Totals
           </Nav.Link>
         </Nav>
+        
         <Nav 
-        onClick={handleLogOut}
-        as={Link} to='#'>
-          Logout
+        className='ml-auto'>
+          <Nav.Link 
+          as={Link}
+          to={'/user-profile'}
+          className='profile-link'>
+            <ProfileIcon />
+            <h6><strong>{auth.profile.username}</strong></h6>
+          </Nav.Link>
+          <OverlayTrigger
+          placement='bottom'
+          overlay={<ToolTip id='logout-tooltip'><h6 style={{padding: 0, width: 'fit-content', margin:'0'}}><strong>Logout</strong></h6></ToolTip>}>
+            <Nav.Link
+            className='logout-link'
+            onClick={handleLogOut}>
+              <LogOutIcon />
+            </Nav.Link>
+          </OverlayTrigger>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

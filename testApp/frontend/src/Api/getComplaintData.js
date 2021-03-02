@@ -90,7 +90,7 @@ export const getAllComplaintData = async (logOutput=false) => {
     complaints
   }
 
-  const openCases = await getComplaints(logOutput)
+  const openCases = await getOpenCases(logOutput)
   
   if(openCases) newData = {
     ...newData,

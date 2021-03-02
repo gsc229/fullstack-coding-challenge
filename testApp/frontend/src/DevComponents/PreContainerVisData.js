@@ -1,20 +1,14 @@
 import React, { useContext } from 'react'
-import { DashBoardContext } from '../Pages/DashBoardContext'
+import { TotalsContext } from '../Pages/TotalsContext'
 
-const PreContainerObj = ({
+const PreContainerVisData= ({
   dataObj,
   many=true
 }) => {
 
-  const { constituentCases, complaints, openCases, closedCases, complaintTallies } = useContext(DashBoardContext)
+  const { totals } = useContext(TotalsContext)
 
-  if(!dataObj) dataObj = {
-    constituentCases, 
-    complaints, 
-    openCases, 
-    closedCases, 
-    complaintTallies 
-  }
+  if(!dataObj) dataObj = totals
 
   return (
     <div className='pre-container'>
@@ -27,4 +21,4 @@ const PreContainerObj = ({
   )
 }
 
-export default PreContainerObj
+export default PreContainerVisData

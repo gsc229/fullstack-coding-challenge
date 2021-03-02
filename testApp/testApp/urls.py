@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/',obtain_auth_token, name='login'),
     path('api/complaints/', include('complaint_app.urls')),
+    path('api/userProfile/', include('complaint_app.urls'))
 ]

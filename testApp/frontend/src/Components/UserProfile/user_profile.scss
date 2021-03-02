@@ -1,0 +1,23 @@
+.user-profile{
+  background-color: #73B2D3;
+  padding: 20px;
+  border-radius: 2px;
+  width: fit-content;
+  min-width: 320px;
+  margin: auto;
+  margin-top: 30px;
+  text-align: left;
+  color: white;
+  ul{
+    list-style: none;
+    padding: 10px;
+    border: 1px solid white;
+    strong{
+      color: aliceblue;
+    }
+  }
+  .not-provided{
+    font-style: italic;
+    color: white;
+  }
+}

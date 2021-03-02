@@ -5,6 +5,7 @@ import {loginUrl} from '../config/config'
 import { useHistory } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 
 const Login = () => {
 
@@ -44,14 +45,22 @@ const Login = () => {
     })
     .catch(loginError => {
       console.log({loginError})
+      setAuth({
+        ...auth,
+        isLoading: false,
+        errorMessage: 'Username or password is incorrect.'
+      })
     })
   }
 
+  if(auth.errorMessage){
+    setTimeout(() => { setAuth({...auth, errorMessage: ''}) }, 4000)
+  }
+
+
   return (
-    <div>
-      <h4>Login</h4>
       <div className='login-form-container'>
-        {JSON.stringify({auth})}
+      <h4>Login</h4>
         <Form 
         onSubmit={handleSubmit}
         className='login-form'>
@@ -75,6 +84,7 @@ const Login = () => {
             value={credentials.password}
             type="password" placeholder="Password" />
           </Form.Group>
+          {auth.errorMessage && <Alert variant='danger'>{auth.errorMessage}</Alert>}
           <Button 
           onSubmit={handleSubmit}
           type="submit">
@@ -82,7 +92,6 @@ const Login = () => {
           </Button>
         </Form>
       </div>
-    </div>
   )
 }
 

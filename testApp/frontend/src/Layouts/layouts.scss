@@ -1,6 +1,7 @@
 .layout-container{
   min-height: 500px;
   padding-top: 85px;
+  text-align: left;
 }
 
 .layout-navbar{
@@ -11,11 +12,64 @@
       max-height: 50px;
       margin-right: 10px;
     }
-    h4{
-      position: relative;
-      top: 3px;
+    .brand-text{
+      h4{
+        position: relative;
+        top: 3px;
+        margin: 0;
+      }
+      p{
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+        font-weight: 350;
+      }
     }
     
+  }
+
+  .icon, h6{
+    color: $nycc-blue;
+    &:hover{
+      color: black;
+    }
+  }
+
+  .profile-link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 5px;
+    width: fit-content;
+    .profile-icon{
+      font-size: 25px;
+    }
+    h6{
+      font-size: 12px;
+    }
+  }
+
+  .logout-link{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    width: fit-content;
+    .log-out-icon{
+      margin-left: 5px;
+    }
+  }
+}
+
+
+#logout-tooltip{
+  .arrow{
+      &::before {
+        border-bottom: 5px solid $nycc-blue;
+      }
+  }
+  .tooltip-inner{
+    background-color: $nycc-blue;
   }
 }
 

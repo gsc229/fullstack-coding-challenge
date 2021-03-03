@@ -32,7 +32,11 @@ const ZipHeatMap = () => {
 
   return (
     <div className='heat-map-container'>
+      
+      <h4>Cases by zip code</h4>
+      
       {loading && <LightSpinner style={{height: '100px'}} text='Loading zip code data...' />}
+
       {!loading && 
       <ResponsiveHeatMapCanvas
         data={heatMapData}

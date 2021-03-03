@@ -60,7 +60,7 @@ class AllCasesViewSet(viewsets.ModelViewSet):
     for zipCode in annotatedSet:
       zipQueryset = self.queryset.filter(zip=zipCode['zip'])
       annotatedZip = zipQueryset.values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count').all()
-      zipsTypes.append({ "zip": zipCode['zip'], "breakdown": annotatedZip })
+      zipsTypes.append({ "zip": zipCode["zip"], "breakdown": annotatedZip })
 
     return Response({ 'success': True, 'total_cases': len(self.queryset), 'num_zips': len(annotatedSet), 'data': zipsTypes })
 

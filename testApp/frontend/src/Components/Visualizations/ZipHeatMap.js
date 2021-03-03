@@ -4,18 +4,21 @@ import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
 import PreContainerVisData  from '../../DevComponents/PreContainerVisData'
 import { heatMapConverter } from './helpers/heatMapConverter'
 import { typeLabels, typeLabelsColors, labelColorKey } from './helpers/allTypes'
+import LightSpinner from '../Spinners/LightSpinner'
 
 const ZipHeatMap = () => {
 
   const [ heatMapData, setHeatMapData ] = useState([])
-  
+  const [loading, setLoading] = useState(true)
+  const [rawData, setRawData] = useState([])
 
   useEffect(() => {
     
     const getAndConvertData = async () => {
       
       const zipAndTypesData = await getAllZipsAndTypes(true)
-
+      setLoading(false)
+      setRawData(zipAndTypesData)
       if(zipAndTypesData){
         setHeatMapData(heatMapConverter(zipAndTypesData.data))
       }
@@ -29,7 +32,8 @@ const ZipHeatMap = () => {
 
   return (
     <div className='heat-map-container'>
-      
+      {loading && <LightSpinner style={{height: '100px'}} text='Loading zip code data...' />}
+      {!loading && 
       <ResponsiveHeatMapCanvas
         data={heatMapData}
         keys={typeLabels}
@@ -70,8 +74,8 @@ const ZipHeatMap = () => {
         motionDamping={9}
         hoverTarget="rowColumn"
         cellHoverOthersOpacity={0.3}
-      />
-      {/* <PreContainerVisData dataObj={{typeLength: typeLabels.length, typeLabels, labelColorKey, heatMapData}} /> */}
+      />}
+      {/* <PreContainerVisData dataObj={{rawData,  typeLength: typeLabels.length, typeLabels, labelColorKey, heatMapData}} /> */}
     </div>
   )
 }

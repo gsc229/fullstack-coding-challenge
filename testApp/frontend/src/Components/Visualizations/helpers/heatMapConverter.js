@@ -27,7 +27,7 @@ const getTypeAndZipObject = (datum) => {
 
 export const heatMapConverter = (zipAndTypesData) => {
 
-  const converted = zipAndTypesData.filter(datum => datum.zip.length === 5).map(datum => getTypeAndZipObject(datum))
+  const converted = zipAndTypesData.filter(datum => datum.zip.length === 5 && datum.zip[0] === '1').sort((a, b) => a.zip - b.zip).map(datum => getTypeAndZipObject(datum))
 
   return converted
 

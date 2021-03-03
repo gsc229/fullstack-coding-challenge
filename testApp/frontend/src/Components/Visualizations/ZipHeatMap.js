@@ -51,7 +51,7 @@ const ZipHeatMap = () => {
             tickRotation: 0,
             legend: 'zipcode',
             legendPosition: 'middle',
-            legendOffset: -40
+            legendOffset: -50
         }}
         cellOpacity={1}
         cellBorderColor={{ from: 'color', modifiers: [ [ 'darker', 0.4 ] ] }}

@@ -10,6 +10,10 @@ from django.db.models import Count
 # Create your views here.
 
 def getDistrictString(user):
+  """ 
+  From the user's profile finds the district and then converts the district into a 
+  string with a leading zero if the district number is a single digit.
+  """
   userprofile = UserProfile.objects.filter(user=user).first()
   dist_num = getattr(userprofile, 'district')
   return f"NYCC0{dist_num}" if len(dist_num) == 1 else f"NYCC{dist_num}"
@@ -30,7 +34,11 @@ class AllCasesViewSet(viewsets.ModelViewSet):
   def getTypeTotals(self, request):
     """ Returns a tally of all the types in the database  """
 
-    annotatedSet = self.queryset.filter(complaint_type__isnull=False).values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count')
+    annotatedSet = self.queryset \
+                  .filter(complaint_type__isnull=False) \
+                  .values('complaint_type').order_by('complaint_type') \
+                  .annotate(count=Count('complaint_type')).order_by('-count')
+
     return Response({ 'success': True, 'total_cases': len(self.queryset), 'num_types': len(annotatedSet), 'data': annotatedSet })
   
   
@@ -38,7 +46,12 @@ class AllCasesViewSet(viewsets.ModelViewSet):
   def getZipcodeTotals(self, request):
     """ Returns the number of ALL complaints from ALL zipcodes """
 
-    annotatedSet = self.queryset.filter(zip__isnull=False).values('zip').order_by('zip').annotate(count=Count('zip')).order_by('-count')
+    annotatedSet = self.queryset \
+                  .filter(zip__isnull=False) \
+                  .values('zip') \
+                  .order_by('zip') \
+                  .annotate(count=Count('zip')).order_by('-count')
+
     return Response({ 'success': True, 'total_cases': len(self.queryset), 'num_zips': len(annotatedSet), 'data': annotatedSet })
 
 
@@ -50,17 +63,32 @@ class AllCasesViewSet(viewsets.ModelViewSet):
     if self.request.query_params:
       zipcode = self.request.query_params['zipcode']
       zipQuery = self.queryset.filter(zip=zipcode).values()
-      annotatedZipTypes = zipQuery.values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count').all()
+      annotatedZipTypes = zipQuery \
+                          .values('complaint_type') \
+                          .order_by('complaint_type') \
+                          .annotate(count=Count('complaint_type')) \
+                          .order_by('-count') \
+                          .all()
       
       return Response({ 'success': True, 'data': { f'{zipcode}': { annotatedZipTypes }} })
     
     #all
-    annotatedSet = self.queryset.filter(zip__isnull=False).values('zip').order_by('zip').annotate(count=Count('zip')).order_by('-count')
+    annotatedSet = self.queryset \
+                  .filter(zip__isnull=False) \
+                  .values('zip') \
+                  .order_by('zip') \
+                  .annotate(count=Count('zip')) \
+                  .order_by('-count')
     zipsTypes = []
     for zipCode in annotatedSet:
       zipQueryset = self.queryset.filter(zip=zipCode['zip'])
-      annotatedZip = zipQueryset.values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count').all()
-      zipsTypes.append({zipCode['zip']: annotatedZip})
+      annotatedZip = zipQueryset \
+                    .values('complaint_type') \
+                    .order_by('complaint_type') \
+                    .annotate(count=Count('complaint_type')) \
+                    .order_by('-count') \
+                    .all()
+      zipsTypes.append({ "zip": zipCode["zip"], "breakdown": annotatedZip })
 
     return Response({ 'success': True, 'total_cases': len(self.queryset), 'num_zips': len(annotatedSet), 'data': zipsTypes })
 
@@ -69,10 +97,14 @@ class AllCasesViewSet(viewsets.ModelViewSet):
   def getBoroughTotals(self, request):
     """ Returns the total of ALL complaints in ALL boroughs """
 
-    annotatedSet = self.queryset.filter(borough__isnull=False).values('borough').order_by('borough').annotate(count=Count('borough')).order_by('-count')
+    annotatedSet = self.queryset \
+                  .filter(borough__isnull=False) \
+                  .values('borough') \
+                  .order_by('borough') \
+                  .annotate(count=Count('borough')) \
+                  .order_by('-count')
+
     return Response({ 'success': True, 'total_cases': len(self.queryset), 'num_boroughs': len(annotatedSet), 'data': annotatedSet })
-
-
 
   
   @action(methods=['get'], detail=False,  url_path='borough-and-type')
@@ -83,15 +115,33 @@ class AllCasesViewSet(viewsets.ModelViewSet):
     if self.request.query_params:
       borough = self.request.query_params['borough']
       zipQuery = self.queryset.filter(borough=borough).values()
-      annotatedBoroughTypes = zipQuery.values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count').all()
+      annotatedBoroughTypes = zipQuery \
+                              .values('complaint_type') \
+                              .order_by('complaint_type') \
+                              .annotate(count=Count('complaint_type')) \
+                              .order_by('-count') \
+                              .all()
+
       return Response({ 'success': True, 'data': { f'{borough}': { annotatedBoroughTypes }} })
     
     #all
-    annotatedSet = self.queryset.filter(zip__isnull=False).values('borough').order_by('borough').annotate(count=Count('borough')).order_by('-count')
+    annotatedSet = self.queryset \
+                  .filter(zip__isnull=False) \
+                  .values('borough') \
+                  .order_by('borough') \
+                  .annotate(count=Count('borough')) \
+                  .order_by('-count')
+
     boroughsTypes = []
     for boroughCode in annotatedSet:
       boroughQueryset = self.queryset.filter(borough=boroughCode['borough'])
-      annotatedborough = boroughQueryset.values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count').all()
+      annotatedborough = boroughQueryset \
+                        .values('complaint_type') \
+                        .order_by('complaint_type') \
+                        .annotate(count=Count('complaint_type')) \
+                        .order_by('-count') \
+                        .all()
+
       boroughsTypes.append({boroughCode['borough']: annotatedborough})
     
 
@@ -142,7 +192,13 @@ class TopComplaintTypeViewSet(viewsets.ModelViewSet):
   def list(self, request):
     # Get the top 3 complaint types from the user's district
     user_dist = getDistrictString(user=request.user)
-    annotatedSet = self.queryset.filter(complaint_type__isnull=False, account=user_dist).values('complaint_type').order_by('complaint_type').annotate(count=Count('complaint_type')).order_by('-count')
+    annotatedSet = self.queryset \
+                  .filter(complaint_type__isnull=False, account=user_dist) \
+                  .values('complaint_type') \
+                  .order_by('complaint_type') \
+                  .annotate(count=Count('complaint_type')) \
+                  .order_by('-count')
+
     top_three =  [complaint['complaint_type'] for complaint in annotatedSet[:3]]
     return Response({"success": True, "top_three": top_three, "data": annotatedSet})
 

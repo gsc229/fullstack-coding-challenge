@@ -9,9 +9,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     # BONUS Task: Flatten out the User object inside of UserProfile.
-    """ 
-    User(*, is_superuser, groups, user_permissions, password, last_login, username, email, is_active, first_name, last_name, is_staff, date_joined)
-    """
+     
+    # User(*, is_superuser, groups, user_permissions, password, last_login, username, email, is_active, first_name, last_name, is_staff, date_joined)
+    
     username = serializers.CharField(source='user.username')
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')

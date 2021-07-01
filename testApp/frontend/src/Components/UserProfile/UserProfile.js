@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../Auth/UserContext'
 import moment from 'moment'
-import PreContainerObj from '../../DevComponents/PreContainerObj'
 
 const UserProfile = () => {
 
@@ -24,7 +23,6 @@ const UserProfile = () => {
           <li><strong>Staff:</strong>&nbsp;&nbsp; {profile.is_staff ? 'Yes' : 'No'}</li>
         </ul>
       </div>
-      {/* <PreContainerObj many={false} dataObj={profile} /> */}
     </div>
   )
 }

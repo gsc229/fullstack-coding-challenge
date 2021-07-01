@@ -25,16 +25,16 @@ const DashboardPage = () => {
     const getNewData = async() => {
       const newData = await  getAllComplaintData()
       if(newData){
-          setData({
+          setData(() => ({
             ...newData,
             isLoading: false
-          })
+          }))
       } else{
-        setData({
-          ...data,
+        setData(d => ({
+          ...d,
           isLoading: false,
           errorMessage: `Sorry, there was a problem loading the data. If refreshing doesn't work, contact system administrator.`
-        })
+        }))
       }
     }
 

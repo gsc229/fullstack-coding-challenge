@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getAllZipsAndTypes } from '../../Api/getVisualizationData'
 import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
-import PreContainerVisData  from '../../DevComponents/PreContainerVisData'
+
 import { heatMapConverter } from './helpers/heatMapConverter'
-import { typeLabels, typeLabelsColors, labelColorKey } from './helpers/allTypes'
+import { typeLabels } from './helpers/allTypes'
 import LightSpinner from '../Spinners/LightSpinner'
 
 const ZipHeatMap = () => {
 
   const [ heatMapData, setHeatMapData ] = useState([])
   const [loading, setLoading] = useState(true)
-  const [rawData, setRawData] = useState([])
 
   useEffect(() => {
     
@@ -18,7 +17,7 @@ const ZipHeatMap = () => {
       
       const zipAndTypesData = await getAllZipsAndTypes(true)
       setLoading(false)
-      setRawData(zipAndTypesData)
+
       if(zipAndTypesData){
         setHeatMapData(heatMapConverter(zipAndTypesData.data))
       }
@@ -26,12 +25,13 @@ const ZipHeatMap = () => {
 
     getAndConvertData()
 
-
   }, [])
 
+ 
 
   return (
-    <div className='heat-map-container'>
+    <div 
+    className='heat-map-container'>
       
       <h4>Cases by zip code</h4>
       

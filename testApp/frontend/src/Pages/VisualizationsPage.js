@@ -5,7 +5,6 @@ import LayoutLoggedIn from '../Layouts/LayoutLoggedIn'
 import Visualizations from '../Components/Visualizations/Visualizations'
 import LightSpinner from '../Components/Spinners/LightSpinner'
 import Alert from 'react-bootstrap/Alert'
-import PreContainerVisData from '../DevComponents/PreContainerVisData'
 
 const VisualizationsPage = () => {
 
@@ -24,17 +23,17 @@ const VisualizationsPage = () => {
       const newData = await getTypeZipAndBoroughTotals()
 
       if(newData){
-        setTotals({
-          ...totals,
+        setTotals((ts) => ({
+          ...ts,
           ...newData,
           isLoading: false
-        })
+        }))
       }else{
-        setTotals({
-          ...totals,
+        setTotals((ts) => ({
+          ...ts,
           isLoading: false,
           errorMessage: `Sorry, there was a problem loading the data. If refreshing doesn't work, contact system administrator.`
-        })
+        }))
       }
     }
 
@@ -52,8 +51,6 @@ const VisualizationsPage = () => {
           {!totals.isLoading && !totals.errorMessage && <Visualizations />}
           {totals.isLoading && <LightSpinner text='Loading...' /> }
           {totals.errorMessage && <Alert variant='danger'>{totals.errorMessage}</Alert>}
-          
-          {/* <PreContainerVisData /> */}
         </TotalsContext.Provider>
       </div>
     </LayoutLoggedIn>

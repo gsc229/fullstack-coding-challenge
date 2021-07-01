@@ -50,7 +50,8 @@ class AllCasesViewSet(viewsets.ModelViewSet):
                   .filter(zip__isnull=False) \
                   .values('zip') \
                   .order_by('zip') \
-                  .annotate(count=Count('zip')).order_by('-count')
+                  .annotate(count=Count('zip')) \
+                  .order_by('-count')
 
     return Response({ 'success': True, 'total_cases': len(self.queryset), 'num_zips': len(annotatedSet), 'data': annotatedSet })
 

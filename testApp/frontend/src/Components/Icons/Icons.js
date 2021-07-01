@@ -1,7 +1,6 @@
 import React from 'react'
 import { CgProfile } from 'react-icons/cg'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
-import { GrDocumentCsv } from 'react-icons/gr'
 import { FaFileCsv } from 'react-icons/fa'
 
 export const ProfileIcon = ({onClick, styles={}}) => <CgProfile style={styles} onClick={onClick} className='icon profile-icon' />

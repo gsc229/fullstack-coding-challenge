@@ -7,6 +7,9 @@ name = "pypi"
 djangorestframework = "==3.9.1"
 Django = "==2.2.8"
 django-cors-headers = "*"
+gunicorn = "*"
+django-heroku = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

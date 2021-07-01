@@ -8,7 +8,7 @@ const DataTable = ({complaintsData}) => {
 
 
   const columns = useMemo(() => COLUMNS, []) 
-  const data = useMemo(() => complaintsData, [])
+  const data = useMemo(() => complaintsData, [complaintsData])
 
   const { 
     getTableProps,
@@ -25,7 +25,7 @@ const DataTable = ({complaintsData}) => {
     )
 
   const { globalFilter } = state
-
+  
   return (
     <>
       <GlobalFilter filter={ globalFilter } setFilter={ setGlobalFilter } />

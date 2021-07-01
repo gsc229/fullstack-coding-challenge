@@ -23,10 +23,10 @@ function App() {
 
     const getProfile = async() => {
       const profile = await getUserProfile()
-      setAuth({
-        ...auth,
+      setAuth(a => ({
+        ...a,
         profile
-      })
+      }))
     }
 
     auth.isAuthenticated && getProfile()

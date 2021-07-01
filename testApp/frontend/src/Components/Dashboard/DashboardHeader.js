@@ -11,7 +11,7 @@ const DashboardHeader = () => {
   const { constituentCases, complaints, openCases, closedCases, complaintTallies } = useContext(DashBoardContext)
   const { auth } = useContext(UserContext)
 
-  const data = useMemo(() =>  pieConverter(complaintTallies), [])
+  const data = useMemo(() =>  pieConverter(complaintTallies), [complaintTallies])
 
   const topThree = complaintTallies.slice(0, 3)
 
